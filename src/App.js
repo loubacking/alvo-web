@@ -1,17 +1,12 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, { Fragment } from 'react';
 import './App.css';
-import Home from './components/Home';
+import Routes from './routes'
 import actions from './actions';
-
 
 function App() {
   return (
-    <Router>
-        <Route path="/" exact render={() => <Home />} />
-    </Router >
+    <Routes />
   )
 }
 
-export default connect(store => store, actions)(App);
+export default App;

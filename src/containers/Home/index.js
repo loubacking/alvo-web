@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import actions from '../../actions';
 import '../../App.css';
-import { Container, Row, Col, InputGroup, FormControl } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import SearchForm from './components/SearchForm';
-import { FaSearch, FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 import logo from '../../assets/images/logo-alvo.png';
 import { Logo } from './styled';
+import Footer from '../../components/Footer';
+
 class Home extends Component {
 
     render() {
@@ -43,13 +44,7 @@ class Home extends Component {
                         </Col>
                     </Row>
                 </Container>
-                <footer style={styles.footer}>
-                    <Col style={{ textAlign: "center", marginTop: 10 }}>
-                        <span style={styles.footerText}>Siga alvo nas redes</span> <br />
-                        <FaFacebookF style={{ color: '#fff', margin: 10 }} />
-                        <FaInstagram style={{ color: '#fff', margin: 10 }} />
-                    </Col>
-                </footer>
+                <Footer/>
             </Fragment>
         );
     }
@@ -83,17 +78,6 @@ const styles = {
         letterSpacing: 1.23,
         marginBottom: 30,
         lineHeight: 1.2
-    },
-    footer: {
-        position: 'fixed',
-        bottom: 0,
-        backgroundColor: '#212121',
-        width: '100%',
-        height: 80,
-    },
-    footerText: {
-        color: '#FFF',
-        fontFamily: 'Arial Bold-MT, sans-serif',
     },
     search: {
         borderRadius: 24
