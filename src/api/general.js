@@ -5,4 +5,9 @@ const searchSong = async (keyword) => {
   return res;
 };
 
-export { searchSong };
+const searchArtist = async (keyword) => {
+  const res = await Client.get('searchArtist', keyword);
+  return res;
+};
+
+export { searchSong, searchArtist };
