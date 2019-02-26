@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 import { FooterContainer, FooterText } from './styled';
 

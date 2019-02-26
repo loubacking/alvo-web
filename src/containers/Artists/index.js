@@ -1,37 +1,54 @@
 import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import actions from '../../actions';
 import '../../App.css';
 import { Container, Row, Col } from 'react-bootstrap';
-import logo from '../../assets/images/logo-alvo.png';
-import { Logo } from './styled';
+import { Image, ArtistWrapper, ArtistName, SongsWrapper, SongName, Title, Index } from './styled';
 import Footer from '../../components/Footer';
-import { fetchArtists } from '../../api/artists';
+import { fetchArtists, fetchAllSongsArtists } from '../../api/artists';
+import Header from '../../components/Header';
 
 class Artists extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: ''
+            name: '',
+            image: '',
+            songs: []
         };
       }
 
     componentDidMount() {
-        fetchArtists('5c115d7ce7179a2e270772fe').then(res => {
+        fetchArtists('5c74bee2fb6fc0720128d40e').then(res => {
             console.log(res);
-            this.setState({ name: res.data.name })
+            this.setState({ name: res.data.name, image: res.data.image })
+        });
+
+        fetchAllSongsArtists('5c74bee2fb6fc0720128d40e').then(res => {
+            console.log(res);
+            this.setState({ songs: res.data })
         })
     }
 
     render() {
+        const { songs } = this.state;
         return (
             <Fragment>
+                <Header />
                 <Container>
-                    <Row>
-                        <Col md={{ span: 10, offset: 1 }}>
-                            {this.state.name}
-                        </Col>
-                    </Row>
+                    <Col>
+                        <ArtistWrapper>
+                            <Image src={this.state.image} />
+                            <ArtistName>{this.state.name}</ArtistName>
+                        </ArtistWrapper>
+                    </Col>
+                    <Col>
+                        <SongsWrapper>
+                            <Title>Mais tocadas</Title>
+                            {songs && songs.map((song, index) => {
+                                return (<SongName><Index>{(index + 1)}</Index>{song.name}</SongName>)
+                            })}
+                            
+                        </SongsWrapper>
+                    </Col>
                 </Container>
                 <Footer />
             </Fragment>

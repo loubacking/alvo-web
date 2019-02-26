@@ -48,7 +48,7 @@ const height = keyframes`
 `
 
 export const SuggestionBox = styled.div`
-    max-height: 433px;
+    max-height: 360px;
     text-align: left;
     top: 40px;
     border-radius: 0 0 25px 25px;
@@ -61,18 +61,29 @@ export const SuggestionBox = styled.div`
     transition: opacity .2s,visibility 0s;
     display: block;
     width: 100%;
-    height: 200px;
+    height: 360px;
     border-top: 0
-    animation: ${height} 0.4s linear;
+    animation: ${height} 0s linear;
 `;
 
 export const ArtistTitle = styled.small`
-    position: absolute;
+    position: relative;
     font-size: 20px;
     color: #424242;
     font-family: Arial;
     font-weight: 600;
     left: 20px;
+    top: -25px;
+`;
+
+export const SongTitle = styled.small`
+    position: relative;
+    font-size: 20px;
+    color: #424242;
+    font-family: Arial;
+    font-weight: 600;
+    left: 20px;
+    top: -40px;
 `;
 
 export const LineBreak = styled.hr`
@@ -80,39 +91,21 @@ export const LineBreak = styled.hr`
     margin-bottom: 10px;
 `;
 
-const appear = keyframes`
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-`
-
-export const Image = styled.div`
-    background-image: url(https://i.ytimg.com/vi/QGNsLtOa3Uo/maxresdefault.jpg);
-    height: 35px;
-    width: 35px;
-    border-radius: 50px;
-    position: absolute;
-    top: 50px;
-    left: 18px;
-    background-size: 75px;
-    background-position: center;
-    background-repeat: no-repeat;
-    animation: ${appear} 0.75s linear;
-`;
-
-export const ArtistName = styled.div`
-    position: absolute;
-    top: 60px;
-    left: 70px;
-    font-size: 15px;
-    color: #424242;
-    font-family: Arial, sans-serif;
-    font-weight: 600;
+export const TextTip = styled.div`
+    position: relative;
+    font-size: 14px;
+    color: #696969;
+    font-family: Arial;
+    top: -25px;
+    left: 20px;
+    margin: 5px 0;
     letter-spacing: 0;
-    animation: ${appear} 0.75s linear;
 `;
 
+export const ArtistWrapper = styled.div`
+    position: relative;
+`;
+
+export const SongWrapper = styled.div`
+    position: relative;
+`;

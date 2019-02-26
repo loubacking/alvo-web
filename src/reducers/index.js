@@ -1,4 +1,11 @@
-import { SEARCH_ARTIST_REQUEST, SEARCH_ARTIST_SUCCESS, SEARCH_ARTIST_FAILED } from './types';
+import 
+  { SEARCH_ARTIST_REQUEST,
+    SEARCH_ARTIST_SUCCESS,
+    SEARCH_ARTIST_FAILED,
+    SEARCH_SONG_REQUEST,
+    SEARCH_SONG_SUCCESS,
+    SEARCH_SONG_FAILED
+   } from './types';
 
 export default function reducer(state = {}, action) {
     // switch between the action type
@@ -12,14 +19,31 @@ export default function reducer(state = {}, action) {
         return {
           ...state,
           isSearching: false,
-          data: action
+          artists: action.artists
         };
       case SEARCH_ARTIST_FAILED:
         return {
           ...state,
           isSearching: true,
           error: action.error
-        }
+        };
+        case SEARCH_SONG_REQUEST:
+        return {
+          ...state,
+          isSearching: true
+        };
+      case SEARCH_SONG_SUCCESS:
+        return {
+          ...state,
+          isSearching: false,
+          songs: action.songs
+        };
+      case SEARCH_SONG_FAILED:
+        return {
+          ...state,
+          isSearching: true,
+          error: action.error
+        };
       default:
         return state;
     }

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import '../../App.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import SearchForm from './components/SearchForm';
-import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 import logo from '../../assets/images/logo-alvo.png';
 import { Logo } from './styled';
 import Footer from '../../components/Footer';
