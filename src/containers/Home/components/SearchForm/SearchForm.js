@@ -70,7 +70,7 @@ class SearchForm extends Component {
                           )
                         }) : <TextTip style={{ top: -40 }}>Músicas não encontrada </TextTip>}
                         </SongWrapper>
-                    </SuggestionBox>}   
+                    </SuggestionBox>}
                 </InputGroup>
             </Fragment>
         )

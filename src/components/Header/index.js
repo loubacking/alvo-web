@@ -9,7 +9,7 @@ class Header extends Component {
         return (
             <HeaderContainer>
                 <Col md={{ span: 10, offset: 2 }}>
-                    <Link to="/">
+                    <Link to={{pathname: "/"}}>
                         <Logo src={logo} />
                     </Link>
                 </Col>

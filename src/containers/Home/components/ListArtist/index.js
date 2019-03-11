@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Image, ArtistName, ArtistWrapper } from './styled';
 
 class ListArtist extends Component {
@@ -14,10 +15,12 @@ class ListArtist extends Component {
         const { artist } = this.props;
         return (
             <ArtistWrapper>
-                <Image src={artist.image} /> 
+                <Link to={{ pathname: '/artists', state: { artistId: artist._id} }}>
+                <Image src={artist.image} />
                 <ArtistName>
                     {artist.name}
                 </ArtistName>
+                </Link>
             </ArtistWrapper>
         )
     }

@@ -5,4 +5,9 @@ const fetchAllSongs = async () => {
   return res;
 };
 
-export { fetchAllSongs };
+const fetchSongs = async (id) => {
+  const res = await Client.get('songs/' + id);
+  return res;
+};
+
+export { fetchAllSongs, fetchSongs };

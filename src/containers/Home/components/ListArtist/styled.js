@@ -24,4 +24,7 @@ export const ArtistWrapper = styled.div`
     position: relative;
     top: -35px;
     height: 45px;
+    &: hover {
+        cursor: pointer;
+    }
 `;
