@@ -6,6 +6,7 @@ export const HeaderContainer = styled.div`
     background-color: #F5F5F5;
     width: 100%;
     height: 80px;
+    z-index: 100;
 `;
 
 export const HeaderText = styled.span`

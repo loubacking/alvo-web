@@ -4,37 +4,23 @@ import { Tag } from './styled';
 
 class Tags extends Component {
   state = {
-    selectedTagsName: ["Cifra"],
-  };
-
-  shouldComponentUpdate = (nextProps, nextState) => {
-    const { selectedTagsName } = this.state;
-    if (selectedTagsName.length !== nextState.selectedTagsName.length) {
-      return true;
-    }
-    return false;
-  };
-
-  componentWillUpdate = (nextProps, nextState) => {
-    this.handleTags(nextState.selectedTagsName);
+    selectedTagsName: ["Letra"],
   };
 
   selectTag = (tagName) => {
-    const { selectedTagsName } = this.state;
 
-    if (selectedTagsName.includes(tagName)) {
-      const removeTagName = selectedTagsName.filter((x) => x !== tagName);
+    if (tagName !== 'Cifra') {
+      console.log(tagName)
       this.setState({
-        selectedTagsName: removeTagName,
-      });
+        selectedTagsName: ["Letra"]
+      })
     } else {
-      this.setState((prevState) => ({
-        selectedTagsName: [...prevState.selectedTagsName, tagName],
-      }));
+      this.setState({
+        selectedTagsName: ["Cifra"]
+      })
     }
-  };
 
-  handleTags = (selectedTagsName) => {
+    this.props.toggleLyrics(tagName);
   };
 
   isSelected = (tag) => {

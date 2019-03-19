@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import '../../App.css';
+import { Link } from 'react-router-dom';
 import { Container, Col, Row } from 'react-bootstrap';
-import { Image, ArtistWrapper, ArtistName, TagsWrapper, SongName } from './styled';
+import { Image, ArtistWrapper, ArtistName, TagsWrapper, SongName, Lyrics } from './styled';
 import Footer from '../../components/Footer';
 import { fetchArtists } from '../../api/artists';
 import { fetchSongs } from '../../api/songs';
@@ -16,22 +16,34 @@ class Songs extends Component {
             name: '',
             image: '',
             lyrics: '',
-            artistName: ''
+            chords: '',
+            artistName: '',
+            isLyrics: true
         };
       }
 
     componentDidMount() {
         const { songId } = this.state;
         fetchSongs(songId).then(res => {
-            this.setState({ lyrics: res.data.lyrics, name: res.data.name, artistName: res.data.artistName });
+            console.log(res)
+            this.setState({ lyrics: res.data.lyrics, name: res.data.name, artistName: res.data.artistName, artistId: res.data.artistId, chords: res.data.chords });
             fetchArtists(res.data.artistId).then(response => {
                 this.setState({ image: response.data.image })
             })
         });
     }
+    
+    toggleLyrics = (value) => {
+        console.log(value);
+        const verify = (value === 'Letra') ? true : false;
+        console.log(verify)
+        this.setState({
+            isLyrics: verify
+        });
+    }
 
     render() {
-        const { name, image, artistName } = this.state;
+        const { name, image, artistName, lyrics, isLyrics, artistId } = this.state;
         return (
             <Fragment>
                 <Header />
@@ -45,12 +57,21 @@ class Songs extends Component {
                         </Col>
                         <Col xs={6}>
                             <SongName>{name}</SongName>
-                            <ArtistName>{artistName}</ArtistName>
+                            <Link to={{ pathname: '/artists', state: { artistId } }}>
+                                <ArtistName>{artistName}</ArtistName>
+                            </Link>
                             <TagsWrapper>
                                 <Row>
-                                    <Tags tags={["Cifra", "Letra"]} />
+                                    <Tags tags={["Cifra", "Letra"]} toggleLyrics={this.toggleLyrics} />
                                 </Row>
                             </TagsWrapper>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={{span: 4, offset: 2}}>
+                            {isLyrics && <Lyrics>
+                                {lyrics}
+                            </Lyrics>}
                         </Col>
                     </Row>
                 </Container>

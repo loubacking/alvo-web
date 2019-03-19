@@ -60,7 +60,17 @@ export const Index = styled.div`
 `;
 
 export const TagsWrapper = styled.div`
-  padding: 15px 0;
-  margin-bottom: 20px;
-  overflow: hidden;
+    padding: 15px 0;
+    margin-bottom: 20px;
+    overflow: hidden;
+`;
+
+export const Lyrics = styled.div`
+    font-family: Arial;
+    font-size: 13px;
+    color: #424242;
+    line-height: 25px;
+    font-weight: 600;
+    white-space: pre-line;
+    margin-bottom: 120px;
 `;
