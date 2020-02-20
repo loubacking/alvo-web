@@ -11,7 +11,7 @@ export const Image = styled.img`
 export const ArtistWrapper = styled.div`
     position: relative;
     text-align: center;
-    margin-top: 5%;
+    margin-top: 100px;
 `;
 
 export const SongsWrapper = styled.div`
@@ -50,9 +50,10 @@ export const Title = styled.div`
     margin: 20px 0;
 `;
 
-export const Index = styled.div`
-    position: relative;
-    float: left;
-    margin-right: 20px;
-    color: #808080;
+export const Wrapper = styled.div`
+    margin-top: 20px;
+`;
+
+export const Button = styled.button`
+    padding: 10px;
 `;

@@ -7,13 +7,17 @@ import {
   ArtistName,
   TagsWrapper,
   SongName,
-  Lyrics
+  Lyrics,
+  Chords,
+  RowStyled
 } from "./styled";
 import Footer from "../../components/Footer";
 import { fetchArtists } from "../../api/artists";
 import { fetchSongs } from "../../api/songs";
 import Header from "../../components/Header";
 import Tags from "./components/Tags";
+import { convertFromRaw } from 'draft-js';
+import { stateToHTML } from 'draft-js-export-html';
 
 class Songs extends Component {
   constructor(props) {
@@ -23,7 +27,7 @@ class Songs extends Component {
       name: "",
       image: "",
       lyrics: "",
-      chords: "",
+      chords: {},
       artistName: "",
       isLyrics: true
     };
@@ -65,35 +69,40 @@ class Songs extends Component {
       artistId,
       chords
     } = this.state;
+    let formattedChords = '';
+    if (Object.entries(chords).length > 0) {
+      formattedChords = stateToHTML(convertFromRaw(chords));
+    }
+
     return (
       <Fragment>
         <Header />
         <Container>
           <Row>
-            <Col xs={2}>
+            <Col md={2} xs={12}>
               <ArtistWrapper>{image && <Image src={image} />}</ArtistWrapper>
             </Col>
-            <Col xs={6}>
+            <Col md={6} xs={12}>
               <SongName>{name}</SongName>
               <Link to={{ pathname: "/artists", state: { artistId } }}>
                 <ArtistName>{artistName}</ArtistName>
               </Link>
               <TagsWrapper>
-                <Row>
+                <RowStyled>
                   <Tags
                     tags={["Cifra", "Letra"]}
                     toggleLyrics={this.toggleLyrics}
                   />
-                </Row>
+                </RowStyled>
               </TagsWrapper>
             </Col>
           </Row>
           <Row>
-            <Col xs={{ span: 4, offset: 2 }}>
+            <Col md={{ span: 4, offset: 2 }} xs={{ span: 12 }}>
               {isLyrics ? (
                 <Lyrics>{lyrics}</Lyrics>
               ) : (
-                <Lyrics dangerouslySetInnerHTML={{ __html: chords }} />
+                <Chords dangerouslySetInnerHTML={{ __html: formattedChords }} />
               )}
             </Col>
           </Row>

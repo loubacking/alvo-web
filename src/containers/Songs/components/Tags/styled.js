@@ -13,4 +13,8 @@ export const Tag = styled.div`
   cursor: pointer;
   width: 80px;
   margin-left: 15px;
+  @media (max-width: 450px) {
+    margin-left: 0px;
+    margin-right: 15px;
+  }
 `;

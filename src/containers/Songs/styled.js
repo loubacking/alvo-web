@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Row } from 'react-bootstrap';
 
 export const Image = styled.img`
     height: 160px;
@@ -14,7 +15,12 @@ export const Image = styled.img`
 export const ArtistWrapper = styled.div`
     position: relative;
     text-align: left;
-    margin-top: 100px;
+    margin-top: 60px;
+
+    @media (max-width: 450px) {
+        margin-top: 20px;
+        text-align: center;
+      }
 `;
 
 export const SongsWrapper = styled.div`
@@ -28,10 +34,14 @@ export const ArtistName = styled.div`
     color: #424242;
     letter-spacing: 0;
     font-weight: 300;
+
+    @media (max-width: 450px) {
+        text-align: center;
+      }
 `;
 
 export const SongName = styled.div`
-    margin-top: 140px;
+    margin-top: 100px;
     position: relative;
     text-align: left;
     font-family: Arial;
@@ -39,6 +49,10 @@ export const SongName = styled.div`
     color: #5959BE;
     letter-spacing: 0;
     font-weight: 600;
+    @media (max-width: 450px) {
+        margin-top: 20px;
+        text-align: center;
+      }
 `;
 
 export const Title = styled.div`
@@ -73,4 +87,20 @@ export const Lyrics = styled.div`
     font-weight: 600;
     white-space: pre-line;
     margin-bottom: 120px;
+`;
+
+export const Chords = styled.div`
+    font-family: Arial;
+    font-size: 13px;
+    color: #424242;
+    line-height: normal;
+    font-weight: 600;
+    white-space: pre-line;
+    margin-bottom: 120px;
+`;
+
+export const RowStyled = styled(Row)`
+@media (max-width: 450px) {
+    justify-content: center;
+  }
 `;

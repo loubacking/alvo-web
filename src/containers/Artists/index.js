@@ -54,7 +54,6 @@ class Artists extends Component {
                                 </Link>
                                 )
                             })}
-                            
                         </SongsWrapper>
                     </Col>
                 </Container>
