@@ -16,8 +16,8 @@ import { fetchArtists } from "../../api/artists";
 import { fetchSongs } from "../../api/songs";
 import Header from "../../components/Header";
 import Tags from "./components/Tags";
-import { convertFromRaw } from 'draft-js';
-import { stateToHTML } from 'draft-js-export-html';
+import { convertFromRaw } from "draft-js";
+import { stateToHTML } from "draft-js-export-html";
 
 class Songs extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class Songs extends Component {
       songId: props.location.state.songId,
       name: "",
       image: "",
-      lyrics: "",
+      lyrics: {},
       chords: {},
       artistName: "",
       isLyrics: true
@@ -51,9 +51,7 @@ class Songs extends Component {
   }
 
   toggleLyrics = (value) => {
-    console.log(value);
-    const verify = value === "Letra" ? true : false;
-    console.log(verify);
+    const verify = value === "Letra";
     this.setState({
       isLyrics: verify
     });
@@ -69,9 +67,13 @@ class Songs extends Component {
       artistId,
       chords
     } = this.state;
-    let formattedChords = '';
-    if (Object.entries(chords).length > 0) {
+    let formattedChords = "";
+    let formattedLyrics = "";
+    if (chords && Object.entries(chords).length > 0) {
       formattedChords = stateToHTML(convertFromRaw(chords));
+    }
+    if (lyrics && Object.entries(lyrics).length > 0) {
+      formattedLyrics = stateToHTML(convertFromRaw(lyrics));
     }
 
     return (
@@ -100,7 +102,7 @@ class Songs extends Component {
           <Row>
             <Col md={{ span: 4, offset: 2 }} xs={{ span: 12 }}>
               {isLyrics ? (
-                <Lyrics>{lyrics}</Lyrics>
+                <Lyrics dangerouslySetInnerHTML={{ __html: formattedLyrics }} />
               ) : (
                 <Chords dangerouslySetInnerHTML={{ __html: formattedChords }} />
               )}
