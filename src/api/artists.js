@@ -15,4 +15,9 @@ const fetchAllSongsArtists = async (id) => {
     return res;
 };
 
-export { fetchAllArtists, fetchArtists, fetchAllSongsArtists };
+const createArtist = async (name, image) => {
+  const res = await Client.post('artists', { name, image });
+  return res;
+};
+
+export { fetchAllArtists, fetchArtists, fetchAllSongsArtists, createArtist };

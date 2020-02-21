@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Col, Row, Spinner } from "react-bootstrap";
 import {
   Image,
   ArtistWrapper,
@@ -23,7 +23,7 @@ class Songs extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      songId: props.location.state.songId,
+      songId: "",
       name: "",
       image: "",
       lyrics: {},
@@ -34,9 +34,8 @@ class Songs extends Component {
   }
 
   componentDidMount() {
-    const { songId } = this.state;
-    fetchSongs(songId).then((res) => {
-      console.log(res);
+    const { location } = this.props;
+    fetchSongs(location.state && location.state.songId).then((res) => {
       this.setState({
         lyrics: res.data.lyrics,
         name: res.data.name,
@@ -79,6 +78,7 @@ class Songs extends Component {
     return (
       <Fragment>
         <Header />
+        {artistName && name ? (
         <Container>
           <Row>
             <Col md={2} xs={12}>
@@ -102,13 +102,13 @@ class Songs extends Component {
           <Row>
             <Col md={{ span: 4, offset: 2 }} xs={{ span: 12 }}>
               {isLyrics ? (
-                <Lyrics dangerouslySetInnerHTML={{ __html: formattedLyrics }} />
+                formattedLyrics ? <Lyrics dangerouslySetInnerHTML={{ __html: formattedLyrics }} /> : <Spinner animation="border" variant="secondary" size='md' />
               ) : (
                 <Chords dangerouslySetInnerHTML={{ __html: formattedChords }} />
               )}
             </Col>
           </Row>
-        </Container>
+        </Container>) : <Container><Col md={12} style={{ display: 'flex', justifyContent: 'center', marginTop: 100, height: 700 }}><Spinner animation="border" color='#5959be'  /></Col></Container>}
         <Footer />
       </Fragment>
     );

@@ -1,17 +1,20 @@
 import React, { Component, Fragment } from 'react';
 import '../../../App.css';
-import { Container, Col, Table, Button, Modal } from 'react-bootstrap';
+import { Container, Col, Table, Button, Modal, I } from 'react-bootstrap';
 import Footer from '../../../components/Footer';
-import { fetchAllArtists } from '../../../api/artists';
+import { fetchAllArtists, createArtist } from '../../../api/artists';
 import Header from '../../../components/Header';
-import { Wrapper } from './styled';
+import { Wrapper, FormWrapper } from './styled';
+import { FormControl } from 'react-bootstrap';
 
 class AdminArtists extends Component {
     constructor(props) {
         super(props);
         this.state = {
             artists: [],
-            show: false
+            show: false,
+            artistName: '',
+            artistUrl: ''
         };
       }
 
@@ -27,16 +30,21 @@ class AdminArtists extends Component {
       }))
     }
 
+    createArtist = () => {
+      const { artistName, artistUrl } = this.state;
+      createArtist(artistName, artistUrl);
+      this.toggleModal();
+    }
+
     render() {
         const { artists, show } = this.state;
-        console.log(artists)
         return (
             <Fragment>
                 <Header />
                 <Container>
                     <Col>
                     <Wrapper>
-                      <Button onClick={this.toggleModal}>Criar</Button>
+                      <Button style={{ float: 'right', margin: 4 }} onClick={this.toggleModal}>Criar</Button>
                       <Table striped bordered hover>
                         <thead>
                           <tr>
@@ -54,15 +62,31 @@ class AdminArtists extends Component {
                 <Footer />
                 <Modal show={show} >
                   <Modal.Header>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Criar Artista</Modal.Title>
                   </Modal.Header>
-                  <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                  <Modal.Body>
+                    <FormWrapper>
+                      <FormControl
+                        placeholder="Nome do Artista"
+                        aria-label="Artista"
+                        aria-describedby="basic-addon1"
+                        onChange={e => this.setState({ artistName: e.target.value })}
+                        style={{ marginBottom: 12 }}
+                      />
+                      <FormControl
+                        placeholder="Imagem do Artista"
+                        aria-label="Imagem"
+                        aria-describedby="basic-addon1"
+                        onChange={e => this.setState({ artistUrl: e.target.value })}
+                      />
+                    </FormWrapper>
+                  </Modal.Body>
                   <Modal.Footer>
                     <Button variant="secondary" onClick={this.toggleModal}>
                       Cancelar
                     </Button>
-                    <Button variant="primary" onClick={this.toggleModal}>
-                      Save Changes
+                    <Button variant="primary" onClick={this.createArtist}>
+                      Criar
                     </Button>
                   </Modal.Footer>
                 </Modal>

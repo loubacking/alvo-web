@@ -5,6 +5,7 @@ import Home from '../containers/Home';
 import Artists from '../containers/Artists';
 import Songs from '../containers/Songs';
 import AdminArtists from '../containers/Admin/Artists';
+import AdminSongs from '../containers/Admin/Songs';
 
 class Routes extends Component {
   render() {
@@ -14,6 +15,7 @@ class Routes extends Component {
         <Route exact path="/artists" component={Artists} />
         <Route exact path="/songs" component={Songs} />
         <Route exact path="/admin/artists" component={AdminArtists} />
+        <Route exact path="/admin/songs" component={AdminSongs} />
       </Fragment>
     );
   }

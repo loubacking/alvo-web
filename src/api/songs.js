@@ -10,4 +10,9 @@ const fetchSongs = async (id) => {
   return res;
 };
 
-export { fetchAllSongs, fetchSongs };
+const createSong = async (data) => {
+  const res = await Client.post('songs/', data);
+  return res;
+}
+
+export { fetchAllSongs, fetchSongs, createSong };
