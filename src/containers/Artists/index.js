@@ -1,7 +1,12 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "../../App.css";
 import { Container, Col } from "react-bootstrap";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+
+import { fetchArtists, fetchAllSongsArtists } from "../../api/artists";
+
+import "../../App.css";
 import {
   Image,
   ArtistWrapper,
@@ -11,67 +16,57 @@ import {
   Title,
   Index
 } from "./styled";
-import Footer from "../../components/Footer";
-import { fetchArtists, fetchAllSongsArtists } from "../../api/artists";
-import Header from "../../components/Header";
 
-class Artists extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      artistId: props.location.state.artistId,
-      name: "",
-      image: "",
-      songs: []
-    };
-  }
 
-  componentDidMount() {
-    const { artistId } = this.state;
+function Artists(props) {
+  const [name, setName] = useState("");
+  const [image, setImage] = useState("");
+  const [songs, setSongs] = useState([]);
+
+  useEffect(() => {
+    const artistId = props.location.state.artistId;
     fetchArtists(artistId).then((res) => {
-      this.setState({ name: res.data.name, image: res.data.image });
+      setName(res.data.name);
+      setImage(res.data.image);
     });
 
     fetchAllSongsArtists(artistId).then((res) => {
-      this.setState({ songs: res.data });
+      setSongs(res.data);
     });
-  }
+  });
 
-  render() {
-    const { name, image, songs } = this.state;
-    return (
-      <Fragment>
-        <Header />
-        <Container>
-          <Col>
-            <ArtistWrapper>
-              {image && <Image src={image} />}
-              <ArtistName>{name}</ArtistName>
-            </ArtistWrapper>
-          </Col>
-          <Col>
-            <SongsWrapper>
-              <Title>Mais tocadas</Title>
-              {songs &&
-                songs.map((song, index) => {
-                  return (
-                    <Link
-                      to={{ pathname: "/songs", state: { songId: song._id } }}
-                    >
-                      <SongName>
-                        <Index>{index + 1}</Index>
-                        {song.name}
-                      </SongName>
-                    </Link>
-                  );
-                })}
-            </SongsWrapper>
-          </Col>
-        </Container>
-        <Footer absolute />
-      </Fragment>
-    );
-  }
+  return (
+    <Fragment>
+      <Header />
+      <Container>
+        <Col>
+          <ArtistWrapper>
+            {image && <Image src={image} />}
+            <ArtistName>{name}</ArtistName>
+          </ArtistWrapper>
+        </Col>
+        <Col>
+          <SongsWrapper>
+            <Title>Mais tocadas</Title>
+            {songs &&
+              songs.map((song, index) => {
+                return (
+                  <Link
+                    to={{ pathname: "/songs", state: { songId: song._id } }}
+                  >
+                    <SongName>
+                      <Index>{index + 1}</Index>
+                      {song.name}
+                    </SongName>
+                  </Link>
+                );
+              })}
+          </SongsWrapper>
+        </Col>
+      </Container>
+      <Footer absolute />
+    </Fragment>
+  );
 }
 
 export default Artists;
