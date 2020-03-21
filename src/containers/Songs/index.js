@@ -18,7 +18,6 @@ import Header from "../../components/Header";
 import Tags from "./components/Tags";
 import { convertFromRaw } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
-import { useCallback } from "react";
 
 function Songs({ location }) {
   const [name, setName] = useState("");
@@ -52,10 +51,10 @@ function Songs({ location }) {
     });
   })
 
-  const toggleLyrics = useCallback(({ value }) => {
+  const toggleLyrics = (value) => {
     const verify = value === "Letra";
     setIsLyrics(verify);
-  }, []);
+  };
 
   return (
     <Fragment>
