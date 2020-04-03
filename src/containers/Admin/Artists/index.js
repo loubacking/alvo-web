@@ -21,9 +21,9 @@ export default function AdminArtists() {
 
   const toggleModal = () => setShow(!show);
 
-  const createArtist = () => {
+  const createNewArtist = () => {
     createArtist(artistName, artistUrl);
-    this.toggleModal();
+    toggleModal();
   }
 
   return (
@@ -71,7 +71,7 @@ export default function AdminArtists() {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={toggleModal}>Cancelar</Button>
-          <Button variant="primary" onClick={createArtist}>Criar</Button>
+          <Button variant="primary" onClick={createNewArtist}>Criar</Button>
         </Modal.Footer>
       </Modal>
     </Fragment>
