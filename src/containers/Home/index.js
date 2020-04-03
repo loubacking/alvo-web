@@ -1,66 +1,66 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useState } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import "../../App.css";
 import { Container, Row, Col } from "react-bootstrap";
+
 import SearchForm from "./components/SearchForm";
-import logo from "../../assets/images/logo-alvo.png";
-import { Logo, Title } from "./styled";
 import Footer from "../../components/Footer";
 import { fetchAllArtists } from "../../api/artists";
-import { Link } from "react-router-dom";
 
-class Home extends Component {
-  state = {
-    artists: []
-  };
+import logo from "../../assets/images/logo-alvo.png";
+import "../../App.css";
+import { Logo, Title } from "./styled";
+import { useEffect } from "react";
 
-  componentDidMount() {
-    fetchAllArtists().then(({ data }) => this.setState({ artists: data }));
-  }
+function Home() {
+  const [artists, setArtists] = useState([]);
 
-  render() {
-    const { artists } = this.state;
-    return (
-      <Fragment>
-        <Container>
-          <Row>
-            <Col style={styles.logo} md={{ span: 10, offset: 1 }}>
-              <Logo src={logo} />
-            </Col>
-          </Row>
-          <Row>
-            <Col md={{ span: 10, offset: 1 }}>
-              <Title>
-                Aprenda a tocar e cantar suas músicas favoritas de Alvo
+  useEffect(() => {
+    fetchAllArtists()
+      .then(({ data }) => setArtists(data));
+  });
+
+  return (
+    <Fragment>
+      <Container>
+        <Row>
+          <Col style={styles.logo} md={{ span: 10, offset: 1 }}>
+            <Logo src={logo} />
+          </Col>
+        </Row>
+        <Row>
+          <Col md={{ span: 10, offset: 1 }}>
+            <Title>
+              Aprenda a tocar e cantar suas músicas favoritas de Alvo
               </Title>
-            </Col>
-          </Row>
-          <Row>
-            <Col style={styles.title} md={{ span: 10, offset: 1 }}>
-              <SearchForm />
-            </Col>
-          </Row>
-          <Row>
-            <Col md={{ span: 10, offset: 1 }}>
-              <div style={styles.suggestionTitle}>
-                <span>Busca mais frequentes</span>
-              </div>
-              {artists.slice(0, 3).map((artist) => (
-                <Link
-                  key={artist._id}
-                  style={styles.suggestionText}
-                  to={{ pathname: "/artists", state: { artistId: artist._id } }}
-                >
-                  <span style={{ marginRight: 15 }}>{artist.name}</span>
-                </Link>
-              ))}
-            </Col>
-          </Row>
-        </Container>
-        <Footer absolute />
-      </Fragment>
-    );
-  }
+          </Col>
+        </Row>
+        <Row>
+          <Col style={styles.title} md={{ span: 10, offset: 1 }}>
+            <SearchForm />
+          </Col>
+        </Row>
+        <Row>
+          <Col md={{ span: 10, offset: 1 }}>
+            <div style={styles.suggestionTitle}>
+              <span>Busca mais frequentes</span>
+            </div>
+            {artists.slice(0, 4).map((artist) => (
+              <Link
+                key={artist._id}
+                style={styles.suggestionText}
+                to={{ pathname: "/artists", state: { artistId: artist._id } }}
+              >
+                <span style={{ marginRight: 15 }}>{artist.name}</span>
+              </Link>
+            ))}
+          </Col>
+        </Row>
+      </Container>
+      <Footer absolute />
+    </Fragment>
+  );
+
 }
 
 const mapStateToProps = (state) => {
