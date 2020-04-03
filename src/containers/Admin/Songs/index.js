@@ -36,7 +36,7 @@ export default function AdminSongs(props) {
       lyrics: contentLyrics,
       chords: contentChords
     }
-    createSong(obj);
+    await createSong(obj);
     toggleModal();
   }
 
