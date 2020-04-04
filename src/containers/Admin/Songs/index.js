@@ -25,7 +25,7 @@ const AdminSongs = props => {
     fetchAllArtists().then(({ data }) => setArtists(data));
 
     fetchAllSongs().then(({ data }) => setSongs(data));
-  });
+  }, []);
 
   const toggleModal = () => setShow(!show);
 

@@ -33,7 +33,7 @@ const Artists = props => {
     fetchAllSongsArtists(artistId).then((res) => {
       setSongs(res.data);
     });
-  });
+  }, []);
 
   return (
     <Fragment>

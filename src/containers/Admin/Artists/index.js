@@ -17,7 +17,7 @@ const AdminArtists = () => {
     fetchAllArtists().then(({ data }) => {
       setArtists(data);
     });
-  });
+  }, []);
 
   const toggleModal = () => setShow(!show);
 

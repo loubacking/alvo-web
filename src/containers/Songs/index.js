@@ -49,7 +49,7 @@ const Songs = ({ location }) => {
         setImage(response.data.image);
       });
     });
-  })
+  }, [])
 
   const toggleLyrics = (value) => {
     const verify = value === "Letra";

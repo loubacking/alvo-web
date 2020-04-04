@@ -18,7 +18,7 @@ const Home = () => {
   useEffect(() => {
     fetchAllArtists()
       .then(({ data }) => setArtists(data));
-  });
+  }, []);
 
   return (
     <Fragment>
