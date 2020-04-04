@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Image, ArtistName, ArtistWrapper } from './styled';
 
-export default function ListArtist({ artist }) {
+const ListArtist = ({ artist }) => {
     return (
         <ArtistWrapper>
             <Link to={{ pathname: '/artists', state: { artistId: artist._id } }}>
@@ -14,3 +14,5 @@ export default function ListArtist({ artist }) {
         </ArtistWrapper>
     )
 }
+
+export default ListArtist;

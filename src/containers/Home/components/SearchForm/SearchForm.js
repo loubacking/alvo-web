@@ -6,7 +6,7 @@ import { FaSearch } from 'react-icons/fa';
 import ListArtist from '../ListArtist';
 import ListSong from '../ListSong';
 
-function SearchForm() {
+const SearchForm = () => {
     const dispatch = useDispatch();
     const artists = useSelector(state => state.unique.artists);
     const songs = useSelector(state => state.unique.songs);

@@ -18,7 +18,7 @@ import {
 } from "./styled";
 
 
-function Artists(props) {
+const Artists = props => {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [songs, setSongs] = useState([]);

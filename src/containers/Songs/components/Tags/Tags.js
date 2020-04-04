@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Tag } from './styled';
 
-function Tags({ tags, toggleLyrics }) {
+const Tags = ({ tags, toggleLyrics }) => {
   const [selectedTagName, setSelectedTagName] = useState("Letra");
 
   function selectTag(tagName) {

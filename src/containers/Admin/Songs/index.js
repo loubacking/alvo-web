@@ -10,7 +10,7 @@ import { fetchAllSongs, createSong } from '../../../api/songs';
 import { Editor } from 'react-draft-wysiwyg';
 import '../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
-export default function AdminSongs(props) {
+const AdminSongs = props => {
   const [artists, setArtists] = useState([]);
   const [songs, setSongs] = useState([]);
   const [show, setShow] = useState(false);
@@ -105,3 +105,5 @@ export default function AdminSongs(props) {
     </Fragment>
   );
 }
+
+export default AdminSongs;

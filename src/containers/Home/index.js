@@ -12,7 +12,7 @@ import "../../App.css";
 import { Logo, Title } from "./styled";
 import { useEffect } from "react";
 
-function Home() {
+const Home = () => {
   const [artists, setArtists] = useState([]);
 
   useEffect(() => {

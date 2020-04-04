@@ -19,7 +19,7 @@ import Tags from "./components/Tags";
 import { convertFromRaw } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
 
-function Songs({ location }) {
+const Songs = ({ location }) => {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [lyrics, setLyrics] = useState({});

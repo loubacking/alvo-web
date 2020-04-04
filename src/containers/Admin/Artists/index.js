@@ -7,7 +7,7 @@ import Header from '../../../components/Header';
 import { Wrapper, FormWrapper } from './styled';
 import { FormControl } from 'react-bootstrap';
 
-export default function AdminArtists() {
+const AdminArtists = () => {
   const [artists, setArtists] = useState([]);
   const [show, setShow] = useState(false);
   const [artistName, setArtistName] = useState('');
@@ -76,5 +76,6 @@ export default function AdminArtists() {
       </Modal>
     </Fragment>
   );
-
 }
+
+export default AdminArtists;
