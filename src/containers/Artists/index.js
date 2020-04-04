@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Container, Col } from "react-bootstrap";
 import Footer from "../../components/Footer";
@@ -36,7 +36,7 @@ const Artists = props => {
   }, []);
 
   return (
-    <Fragment>
+    <>
       <Header />
       <Container>
         <Col>
@@ -65,7 +65,7 @@ const Artists = props => {
         </Col>
       </Container>
       <Footer absolute />
-    </Fragment>
+    </>
   );
 }
 

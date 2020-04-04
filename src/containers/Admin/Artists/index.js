@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../../App.css';
 import { Container, Col, Table, Button, Modal, I } from 'react-bootstrap';
 import Footer from '../../../components/Footer';
@@ -27,7 +27,7 @@ const AdminArtists = () => {
   }
 
   return (
-    <Fragment>
+    <>
       <Header />
       <Container>
         <Col>
@@ -74,7 +74,7 @@ const AdminArtists = () => {
           <Button variant="primary" onClick={createNewArtist}>Criar</Button>
         </Modal.Footer>
       </Modal>
-    </Fragment>
+    </>
   );
 }
 

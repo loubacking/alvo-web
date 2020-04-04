@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Col, Row, Spinner } from "react-bootstrap";
 import {
@@ -57,7 +57,7 @@ const Songs = ({ location }) => {
   };
 
   return (
-    <Fragment>
+    <>
       <Header />
       {artistName && name ? (
         <Container>
@@ -91,7 +91,7 @@ const Songs = ({ location }) => {
           </Row>
         </Container>) : <Container><Col md={12} style={{ display: 'flex', justifyContent: 'center', marginTop: 100, height: 700 }}><Spinner animation="border" color='#5959be' /></Col></Container>}
       <Footer />
-    </Fragment>
+    </>
   );
 
 }

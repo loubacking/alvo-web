@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 
@@ -20,7 +20,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Fragment>
+    <>
       <Container>
         <Row>
           <Col style={styles.logo} md={{ span: 10, offset: 1 }}>
@@ -57,7 +57,7 @@ const Home = () => {
         </Row>
       </Container>
       <Footer absolute />
-    </Fragment>
+    </>
   );
 
 }

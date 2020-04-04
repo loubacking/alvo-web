@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../../App.css';
 import { Container, Col, Table, Button, Modal, I, Form } from 'react-bootstrap';
 import Footer from '../../../components/Footer';
@@ -45,7 +45,7 @@ const AdminSongs = props => {
   const onContentChordsChange = contentState => setContentChords(contentState);
 
   return (
-    <Fragment>
+    <>
       <Header />
       <Container>
         <Col>
@@ -102,7 +102,7 @@ const AdminSongs = props => {
           <Button variant="primary" onClick={createNewSong}>Criar</Button>
         </Modal.Footer>
       </Modal>
-    </Fragment>
+    </>
   );
 }
 

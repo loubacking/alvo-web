@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { searchArtistAction, searchSongAction } from '../../../../actions';
 import { InputGroup, SearchInput, IconWrapper, SuggestionBox, ArtistTitle, LineBreak, TextTip, SongTitle, ArtistWrapper, SongWrapper } from './styled';
@@ -25,7 +25,7 @@ const SearchForm = () => {
     }
 
     return (
-        <Fragment>
+        <>
             <InputGroup>
                 <IconWrapper>
                     <FaSearch />
@@ -51,7 +51,7 @@ const SearchForm = () => {
                     </SongWrapper>
                 </SuggestionBox>}
             </InputGroup>
-        </Fragment>
+        </>
     )
 
 }
