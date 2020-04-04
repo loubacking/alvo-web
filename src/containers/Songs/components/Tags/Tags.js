@@ -5,7 +5,7 @@ import { Tag } from './styled';
 const Tags = ({ tags, toggleLyrics }) => {
   const [selectedTagName, setSelectedTagName] = useState("Letra");
 
-  function selectTag(tagName) {
+  const selectTag = tagName => {
     if (tagName !== 'Letra') {
       setSelectedTagName("Cifra");
     } else {
@@ -14,9 +14,7 @@ const Tags = ({ tags, toggleLyrics }) => {
     toggleLyrics(tagName);
   };
 
-  const isSelected = (tag) => {
-    return selectedTagName.includes(tag);
-  };
+  const isSelected = tag => selectedTagName.includes(tag);
 
   return (
     <>

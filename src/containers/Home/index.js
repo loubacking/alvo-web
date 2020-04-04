@@ -1,6 +1,5 @@
-import React, { Component, Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 
 import SearchForm from "./components/SearchForm";
@@ -63,18 +62,7 @@ const Home = () => {
 
 }
 
-const mapStateToProps = (state) => {
-  return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Home);
+export default Home;
 
 const styles = {
   logo: {

@@ -51,7 +51,7 @@ const Songs = ({ location }) => {
     });
   }, [])
 
-  const toggleLyrics = (value) => {
+  const toggleLyrics = value => {
     const verify = value === "Letra";
     setIsLyrics(verify);
   };

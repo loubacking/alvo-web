@@ -40,9 +40,9 @@ const AdminSongs = props => {
     toggleModal();
   }
 
-  const onContentLyricsChange = (contentState) => setContentLyrics(contentState);
+  const onContentLyricsChange = contentState => setContentLyrics(contentState);
 
-  const onContentChordsChange = (contentState) => setContentChords(contentState);
+  const onContentChordsChange = contentState => setContentChords(contentState);
 
   return (
     <Fragment>
