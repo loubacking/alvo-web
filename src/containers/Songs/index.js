@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Col, Row, Spinner } from "react-bootstrap";
 import {
@@ -19,66 +19,47 @@ import Tags from "./components/Tags";
 import { convertFromRaw } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
 
-class Songs extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      songId: "",
-      name: "",
-      image: "",
-      lyrics: {},
-      chords: {},
-      artistName: "",
-      isLyrics: true
-    };
-  }
+const Songs = ({ location }) => {
+  const [name, setName] = useState("");
+  const [image, setImage] = useState("");
+  const [lyrics, setLyrics] = useState({});
+  const [chords, setChords] = useState({});
+  const [artistName, setArtistName] = useState("");
+  const [artistId, setArtistId] = useState("");
+  const [isLyrics, setIsLyrics] = useState(true);
+  const [formattedChords, setFormattedChords] = useState("");
+  const [formattedLyrics, setFormattedLyrics] = useState("");
 
-  componentDidMount() {
-    const { location } = this.props;
+  useEffect(() => {
     fetchSongs(location.state && location.state.songId).then((res) => {
-      this.setState({
-        lyrics: res.data.lyrics,
-        name: res.data.name,
-        artistName: res.data.artistName,
-        artistId: res.data.artistId,
-        chords: res.data.chords
-      });
-      fetchArtists(res.data.artistId).then((response) => {
-        this.setState({ image: response.data.image });
-      });
-    });
-  }
+      setLyrics(res.data.lyrics);
+      setName(res.data.name);
+      setArtistName(res.data.artistName);
+      setArtistId(res.data.artistId);
+      setChords(res.data.chords);
 
-  toggleLyrics = (value) => {
-    const verify = value === "Letra";
-    this.setState({
-      isLyrics: verify
+      if (chords && Object.entries(chords).length > 0) {
+        setFormattedChords(stateToHTML(convertFromRaw(chords)));
+      }
+      if (lyrics && Object.entries(lyrics).length > 0) {
+        setFormattedLyrics(stateToHTML(convertFromRaw(lyrics)));
+      }
+
+      fetchArtists(res.data.artistId).then((response) => {
+        setImage(response.data.image);
+      });
     });
+  }, [])
+
+  const toggleLyrics = value => {
+    const verify = value === "Letra";
+    setIsLyrics(verify);
   };
 
-  render() {
-    const {
-      name,
-      image,
-      artistName,
-      lyrics,
-      isLyrics,
-      artistId,
-      chords
-    } = this.state;
-    let formattedChords = "";
-    let formattedLyrics = "";
-    if (chords && Object.entries(chords).length > 0) {
-      formattedChords = stateToHTML(convertFromRaw(chords));
-    }
-    if (lyrics && Object.entries(lyrics).length > 0) {
-      formattedLyrics = stateToHTML(convertFromRaw(lyrics));
-    }
-
-    return (
-      <Fragment>
-        <Header />
-        {artistName && name ? (
+  return (
+    <>
+      <Header />
+      {artistName && name ? (
         <Container>
           <Row>
             <Col md={2} xs={12}>
@@ -93,7 +74,7 @@ class Songs extends Component {
                 <RowStyled>
                   <Tags
                     tags={["Cifra", "Letra"]}
-                    toggleLyrics={this.toggleLyrics}
+                    toggleLyrics={toggleLyrics}
                   />
                 </RowStyled>
               </TagsWrapper>
@@ -104,15 +85,15 @@ class Songs extends Component {
               {isLyrics ? (
                 formattedLyrics ? <Lyrics dangerouslySetInnerHTML={{ __html: formattedLyrics }} /> : <Spinner animation="border" variant="secondary" size='md' />
               ) : (
-                <Chords dangerouslySetInnerHTML={{ __html: formattedChords }} />
-              )}
+                  <Chords dangerouslySetInnerHTML={{ __html: formattedChords }} />
+                )}
             </Col>
           </Row>
-        </Container>) : <Container><Col md={12} style={{ display: 'flex', justifyContent: 'center', marginTop: 100, height: 700 }}><Spinner animation="border" color='#5959be'  /></Col></Container>}
-        <Footer />
-      </Fragment>
-    );
-  }
+        </Container>) : <Container><Col md={12} style={{ display: 'flex', justifyContent: 'center', marginTop: 100, height: 700 }}><Spinner animation="border" color='#5959be' /></Col></Container>}
+      <Footer />
+    </>
+  );
+
 }
 
 export default Songs;

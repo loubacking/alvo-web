@@ -1,50 +1,33 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Tag } from './styled';
 
-class Tags extends Component {
-  state = {
-    selectedTagsName: ["Letra"],
-  };
+const Tags = ({ tags, toggleLyrics }) => {
+  const [selectedTagName, setSelectedTagName] = useState("Letra");
 
-  selectTag = (tagName) => {
-
-    if (tagName !== 'Cifra') {
-      console.log(tagName)
-      this.setState({
-        selectedTagsName: ["Letra"]
-      })
+  const selectTag = tagName => {
+    if (tagName !== 'Letra') {
+      setSelectedTagName("Cifra");
     } else {
-      this.setState({
-        selectedTagsName: ["Cifra"]
-      })
+      setSelectedTagName("Letra");
     }
-
-    this.props.toggleLyrics(tagName);
+    toggleLyrics(tagName);
   };
 
-  isSelected = (tag) => {
-    const { selectedTagsName } = this.state;
-    return selectedTagsName.includes(tag);
-  };
+  const isSelected = tag => selectedTagName.includes(tag);
 
-  render() {
-    const { tags } = this.props;
+  return (
+    <>
+      {tags.map((tag, index) => (
+        <Tag
+          key={tag + index}
+          dark={isSelected(tag)}
+          onClick={() => selectTag(tag)}
+        >{tag}</Tag>
+      ))}
+    </>
+  );
 
-    return (
-      <Fragment>
-          {tags.map((tag, index) => (
-            <Tag
-              key={tag + index}
-              dark={this.isSelected(tag)}
-              onClick={() => this.selectTag(tag)}
-            >
-              {tag}
-            </Tag>
-          ))}
-      </Fragment>
-    );
-  }
 }
 
 Tags.propTypes = {

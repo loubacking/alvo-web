@@ -1,7 +1,6 @@
 import { Client } from './client';
 
 const searchSong = async (keyword) => {
-  console.log(keyword)
   const res = await Client.get('/searchSong?keyword=' + keyword);
   return res;
 };
