@@ -22,8 +22,6 @@ import { stateToHTML } from "draft-js-export-html";
 const Songs = ({ location }) => {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
-  const [lyrics, setLyrics] = useState({});
-  const [chords, setChords] = useState({});
   const [artistName, setArtistName] = useState("");
   const [artistId, setArtistId] = useState("");
   const [isLyrics, setIsLyrics] = useState(true);
@@ -32,11 +30,11 @@ const Songs = ({ location }) => {
 
   useEffect(() => {
     fetchSongs(location.state && location.state.songId).then((res) => {
-      setLyrics(res.data.lyrics);
-      setName(res.data.name);
-      setArtistName(res.data.artistName);
-      setArtistId(res.data.artistId);
-      setChords(res.data.chords);
+      const { lyrics, name, artistName, artistId, chords } = res.data;
+
+      setName(name);
+      setArtistName(artistName);
+      setArtistId(artistId);
 
       if (chords && Object.entries(chords).length > 0) {
         setFormattedChords(stateToHTML(convertFromRaw(chords)));
@@ -45,13 +43,13 @@ const Songs = ({ location }) => {
         setFormattedLyrics(stateToHTML(convertFromRaw(lyrics)));
       }
 
-      fetchArtists(res.data.artistId).then((response) => {
+      fetchArtists(artistId).then((response) => {
         setImage(response.data.image);
       });
     });
-  }, [])
+  }, []);
 
-  const toggleLyrics = value => {
+  const toggleLyrics = (value) => {
     const verify = value === "Letra";
     setIsLyrics(verify);
   };
@@ -72,10 +70,7 @@ const Songs = ({ location }) => {
               </Link>
               <TagsWrapper>
                 <RowStyled>
-                  <Tags
-                    tags={["Cifra", "Letra"]}
-                    toggleLyrics={toggleLyrics}
-                  />
+                  <Tags tags={["Cifra", "Letra"]} toggleLyrics={toggleLyrics} />
                 </RowStyled>
               </TagsWrapper>
             </Col>
@@ -83,17 +78,37 @@ const Songs = ({ location }) => {
           <Row>
             <Col md={{ span: 4, offset: 2 }} xs={{ span: 12 }}>
               {isLyrics ? (
-                formattedLyrics ? <Lyrics dangerouslySetInnerHTML={{ __html: formattedLyrics }} /> : <Spinner animation="border" variant="secondary" size='md' />
+                formattedLyrics ? (
+                  <Lyrics
+                    dangerouslySetInnerHTML={{ __html: formattedLyrics }}
+                  />
+                ) : (
+                  <Spinner animation="border" variant="secondary" size="md" />
+                )
               ) : (
-                  <Chords dangerouslySetInnerHTML={{ __html: formattedChords }} />
-                )}
+                <Chords dangerouslySetInnerHTML={{ __html: formattedChords }} />
+              )}
             </Col>
           </Row>
-        </Container>) : <Container><Col md={12} style={{ display: 'flex', justifyContent: 'center', marginTop: 100, height: 700 }}><Spinner animation="border" color='#5959be' /></Col></Container>}
+        </Container>
+      ) : (
+        <Container>
+          <Col
+            md={12}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: 100,
+              height: 700
+            }}
+          >
+            <Spinner animation="border" color="#5959be" />
+          </Col>
+        </Container>
+      )}
       <Footer />
     </>
   );
-
-}
+};
 
 export default Songs;

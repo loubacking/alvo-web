@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Container, Col } from "react-bootstrap";
+import { Container, Col, Spinner } from "react-bootstrap";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 
@@ -17,8 +17,7 @@ import {
   Index
 } from "./styled";
 
-
-const Artists = props => {
+const Artists = (props) => {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [songs, setSongs] = useState([]);
@@ -38,35 +37,52 @@ const Artists = props => {
   return (
     <>
       <Header />
-      <Container>
-        <Col>
-          <ArtistWrapper>
-            {image && <Image src={image} />}
-            <ArtistName>{name}</ArtistName>
-          </ArtistWrapper>
-        </Col>
-        <Col>
-          <SongsWrapper>
-            <Title>Mais tocadas</Title>
-            {songs &&
-              songs.map((song, index) => {
-                return (
-                  <Link
-                    to={{ pathname: "/songs", state: { songId: song._id } }}
-                  >
-                    <SongName>
-                      <Index>{index + 1}</Index>
-                      {song.name}
-                    </SongName>
-                  </Link>
-                );
-              })}
-          </SongsWrapper>
-        </Col>
-      </Container>
+      {name ? (
+        <Container>
+          <Col>
+            <ArtistWrapper>
+              {image && <Image src={image} />}
+              <ArtistName>{name}</ArtistName>
+            </ArtistWrapper>
+          </Col>
+          <Col>
+            <SongsWrapper>
+              <Title>Músicas</Title>
+              {songs &&
+                songs.map((song, index) => {
+                  return (
+                    <Link
+                      key={song._id}
+                      to={{ pathname: "/songs", state: { songId: song._id } }}
+                    >
+                      <SongName>
+                        <Index>{index + 1}</Index>
+                        {song.name}
+                      </SongName>
+                    </Link>
+                  );
+                })}
+            </SongsWrapper>
+          </Col>
+        </Container>
+      ) : (
+        <Container>
+          <Col
+            md={12}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: 100,
+              height: 700
+            }}
+          >
+            <Spinner animation="border" color="#5959be" />
+          </Col>
+        </Container>
+      )}
       <Footer absolute />
     </>
   );
-}
+};
 
 export default Artists;
