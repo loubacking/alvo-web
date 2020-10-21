@@ -1,12 +1,12 @@
 import { searchArtist, searchSong } from '../api/general';
-import 
-{ SEARCH_ARTIST_REQUEST,
-  SEARCH_ARTIST_SUCCESS,
-  SEARCH_ARTIST_FAILED,
-  SEARCH_SONG_REQUEST,
-  SEARCH_SONG_SUCCESS,
-  SEARCH_SONG_FAILED
- } from '../reducers/types';
+import {
+SEARCH_ARTIST_REQUEST,
+SEARCH_ARTIST_SUCCESS,
+SEARCH_ARTIST_FAILED,
+SEARCH_SONG_REQUEST,
+SEARCH_SONG_SUCCESS,
+SEARCH_SONG_FAILED
+} from '../reducers/types';
 
 // Search Artist
 

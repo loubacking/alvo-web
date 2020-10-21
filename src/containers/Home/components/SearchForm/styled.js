@@ -26,6 +26,7 @@ export const SearchInput = styled.input`
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     border-bottom-left-radius: ${({ isSuggestion }) => isSuggestion ? 0 : "25px" };
     border-bottom-right-radius: ${({ isSuggestion }) => isSuggestion ? 0 : "25px" };
+    outline: none;
 `;
 
 export const IconWrapper = styled.span`
