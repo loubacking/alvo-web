@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css';
+import HttpsRedirect from 'react-https-redirect';
 import Routes from './routes';
 
 function App() {
   return (
-    <Routes />
+    <HttpsRedirect>
+      <Routes />
+    </HttpsRedirect>
   )
 }
 
