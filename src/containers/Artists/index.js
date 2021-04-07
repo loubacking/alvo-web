@@ -23,7 +23,12 @@ const Artists = (props) => {
   const [songs, setSongs] = useState([]);
 
   useEffect(() => {
-    const artistId = props.location.state.artistId;
+    const artistId = props.location.state && props.location.state.artistId;
+
+    if(!artistId) {
+      window.location.pathname = "/"
+    }
+
     fetchArtists(artistId).then((res) => {
       setName(res.data.name);
       setImage(res.data.image);
@@ -32,7 +37,7 @@ const Artists = (props) => {
     fetchAllSongsArtists(artistId).then((res) => {
       setSongs(res.data);
     });
-  }, []);
+  }, [props.location.state]);
 
   return (
     <>
