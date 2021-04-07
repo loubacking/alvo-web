@@ -10,7 +10,7 @@ const Header = () => {
             <Container>
                 <Col md={{ span: 10, offset: 2 }}>
                     <Link to={{ pathname: "/" }}>
-                        <Logo src={logo} />
+                        <Logo src={logo} alt="Alvo Cifras Logo" />
                     </Link>
                 </Col>
             </Container>

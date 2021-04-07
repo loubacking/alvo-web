@@ -32,6 +32,7 @@ export const HeaderText = styled.span`
 export const Logo = styled.img`
   margin-top: 10px;
   width: 180px;
+  aspect-ratio: 3;
   @media (max-width: 450px) {
     width: 160px;
     margin-top: 5px;

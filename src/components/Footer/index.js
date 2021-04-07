@@ -9,10 +9,16 @@ const Footer = ({ absolute }) => {
       <Col style={{ textAlign: "center", paddingTop: 10 }}>
         <FooterText> Siga alvo nas redes </FooterText>
         <br />
-        <a href="https://www.facebook.com/Alvo-Da-Mocidade-486291074740913/">
+        <a 
+          href="https://www.facebook.com/Alvo-Da-Mocidade-486291074740913/" 
+          aria-label="Facebook"
+        >
           <FaFacebookF style={{ color: "#fff", margin: 10 }} />
         </a>
-        <a href="https://www.instagram.com/alvodamocidade_/">
+        <a 
+          href="https://www.instagram.com/alvodamocidade_/" 
+          aria-label="Instagram"
+        >
           <FaInstagram style={{ color: "#fff", margin: 10 }} />
         </a>
       </Col>

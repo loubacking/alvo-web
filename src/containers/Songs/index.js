@@ -47,7 +47,7 @@ const Songs = ({ location }) => {
         setImage(response.data.image);
       });
     });
-  }, []);
+  }, [location.state]);
 
   const toggleLyrics = (value) => {
     const verify = value === "Letra";
@@ -61,7 +61,9 @@ const Songs = ({ location }) => {
         <Container>
           <Row>
             <Col md={2} xs={12}>
+            <Link to={{ pathname: "/artists", state: { artistId } }}>
               <ArtistWrapper>{image && <Image src={image} />}</ArtistWrapper>
+            </Link>
             </Col>
             <Col md={6} xs={12}>
               <SongName>{name}</SongName>

@@ -24,14 +24,14 @@ const Home = () => {
       <Container>
         <Row>
           <Col style={styles.logo} md={{ span: 10, offset: 1 }}>
-            <Logo src={logo} />
+            <Logo src={logo} alt='Alvo Cifras Logo' />
           </Col>
         </Row>
         <Row>
           <Col md={{ span: 10, offset: 1 }}>
             <Title>
               Aprenda a tocar e cantar suas músicas favoritas de Alvo
-              </Title>
+            </Title>
           </Col>
         </Row>
         <Row>

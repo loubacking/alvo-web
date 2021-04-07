@@ -9,7 +9,8 @@ import { FormControl } from "react-bootstrap";
 
 const AdminArtists = () => {
   const [artists, setArtists] = useState([]);
-  const [show, setShow] = useState(false);
+  const [showCreate, setShowCreate] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
   const [artistName, setArtistName] = useState("");
   const [artistUrl, setArtistUrl] = useState("");
 
@@ -19,11 +20,12 @@ const AdminArtists = () => {
     });
   }, []);
 
-  const toggleModal = () => setShow(!show);
+  const toggleModalCreate = () => setShowCreate(!showCreate);
+  const toggleModalEdit = () => setShowEdit(!showEdit);
 
   const createNewArtist = () => {
     createArtist(artistName, artistUrl);
-    toggleModal();
+    toggleModalCreate();
   };
 
   return (
@@ -32,7 +34,10 @@ const AdminArtists = () => {
       <Container>
         <Col>
           <Wrapper>
-            <Button style={{ float: "right", margin: 4 }} onClick={toggleModal}>
+            <Button
+             style={{ float: "right", margin: 4 }}
+             onClick={toggleModalCreate}
+            >
               Criar
             </Button>
             <Table striped bordered hover>
@@ -40,6 +45,7 @@ const AdminArtists = () => {
                 <tr>
                   <th>Id</th>
                   <th>Nome</th>
+                  <th>Ações</th>
                 </tr>
               </thead>
               <tbody>
@@ -47,6 +53,14 @@ const AdminArtists = () => {
                   <tr>
                     <td>{artist._id}</td>
                     <td>{artist.name}</td>
+                    <td>
+                      <Button
+                        style={{ float: "right", marginHorizontal: 4 }}
+                        onClick={toggleModalEdit}
+                      >
+                        Editar
+                      </Button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -55,7 +69,7 @@ const AdminArtists = () => {
         </Col>
       </Container>
       <Footer />
-      <Modal show={show}>
+      <Modal show={showCreate}>
         <Modal.Header>
           <Modal.Title>Criar Artista</Modal.Title>
         </Modal.Header>
@@ -77,7 +91,7 @@ const AdminArtists = () => {
           </FormWrapper>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={toggleModal}>
+          <Button variant="secondary" onClick={toggleModalCreate}>
             Cancelar
           </Button>
           <Button variant="primary" onClick={createNewArtist}>
