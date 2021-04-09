@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Container, Col, Row, Spinner } from "react-bootstrap";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Container, Col, Row, Spinner } from 'react-bootstrap';
 import {
   Image,
   ArtistWrapper,
@@ -9,24 +9,23 @@ import {
   SongName,
   Lyrics,
   Chords,
-  RowStyled
-} from "./styled";
-import Footer from "../../components/Footer";
-import { fetchArtists } from "../../api/artists";
-import { fetchSongs } from "../../api/songs";
-import Header from "../../components/Header";
-import Tags from "./components/Tags";
-import { convertFromRaw } from "draft-js";
-import { stateToHTML } from "draft-js-export-html";
+  RowStyled,
+} from './styled';
+import { Header, Footer } from '../../components';
+import { fetchArtists } from '../../api/artists';
+import { fetchSongs } from '../../api/songs';
+import Tags from './components/Tags';
+import { convertFromRaw } from 'draft-js';
+import { stateToHTML } from 'draft-js-export-html';
 
 const Songs = ({ location }) => {
-  const [name, setName] = useState("");
-  const [image, setImage] = useState("");
-  const [artistName, setArtistName] = useState("");
-  const [artistId, setArtistId] = useState("");
+  const [name, setName] = useState('');
+  const [image, setImage] = useState('');
+  const [artistName, setArtistName] = useState('');
+  const [artistId, setArtistId] = useState('');
   const [isLyrics, setIsLyrics] = useState(true);
-  const [formattedChords, setFormattedChords] = useState("");
-  const [formattedLyrics, setFormattedLyrics] = useState("");
+  const [formattedChords, setFormattedChords] = useState('');
+  const [formattedLyrics, setFormattedLyrics] = useState('');
 
   useEffect(() => {
     fetchSongs(location.state && location.state.songId).then((res) => {
@@ -50,7 +49,7 @@ const Songs = ({ location }) => {
   }, [location.state]);
 
   const toggleLyrics = (value) => {
-    const verify = value === "Letra";
+    const verify = value === 'Letra';
     setIsLyrics(verify);
   };
 
@@ -61,18 +60,18 @@ const Songs = ({ location }) => {
         <Container>
           <Row>
             <Col md={2} xs={12}>
-            <Link to={{ pathname: "/artists", state: { artistId } }}>
-              <ArtistWrapper>{image && <Image src={image} />}</ArtistWrapper>
-            </Link>
+              <Link to={{ pathname: '/artists', state: { artistId } }}>
+                <ArtistWrapper>{image && <Image src={image} />}</ArtistWrapper>
+              </Link>
             </Col>
             <Col md={6} xs={12}>
               <SongName>{name}</SongName>
-              <Link to={{ pathname: "/artists", state: { artistId } }}>
+              <Link to={{ pathname: '/artists', state: { artistId } }}>
                 <ArtistName>{artistName}</ArtistName>
               </Link>
               <TagsWrapper>
                 <RowStyled>
-                  <Tags tags={["Cifra", "Letra"]} toggleLyrics={toggleLyrics} />
+                  <Tags tags={['Cifra', 'Letra']} toggleLyrics={toggleLyrics} />
                 </RowStyled>
               </TagsWrapper>
             </Col>
@@ -81,9 +80,7 @@ const Songs = ({ location }) => {
             <Col md={{ span: 4, offset: 2 }} xs={{ span: 12 }}>
               {isLyrics ? (
                 formattedLyrics ? (
-                  <Lyrics
-                    dangerouslySetInnerHTML={{ __html: formattedLyrics }}
-                  />
+                  <Lyrics dangerouslySetInnerHTML={{ __html: formattedLyrics }} />
                 ) : (
                   <Spinner animation="border" variant="secondary" size="md" />
                 )
@@ -98,10 +95,10 @@ const Songs = ({ location }) => {
           <Col
             md={12}
             style={{
-              display: "flex",
-              justifyContent: "center",
+              display: 'flex',
+              justifyContent: 'center',
               marginTop: 100,
-              height: 700
+              height: 700,
             }}
           >
             <Spinner animation="border" color="#5959be" />

@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Container, Col, Spinner } from "react-bootstrap";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Container, Col, Spinner } from 'react-bootstrap';
+import { Header, Footer } from '../../components';
 
-import { fetchArtists, fetchAllSongsArtists } from "../../api/artists";
+import { fetchArtists, fetchAllSongsArtists } from '../../api/artists';
 
-import "../../App.css";
+import '../../App.css';
 import {
   Image,
   ArtistWrapper,
@@ -14,19 +13,19 @@ import {
   SongsWrapper,
   SongName,
   Title,
-  Index
-} from "./styled";
+  Index,
+} from './styled';
 
 const Artists = (props) => {
-  const [name, setName] = useState("");
-  const [image, setImage] = useState("");
+  const [name, setName] = useState('');
+  const [image, setImage] = useState('');
   const [songs, setSongs] = useState([]);
 
   useEffect(() => {
     const artistId = props.location.state && props.location.state.artistId;
 
-    if(!artistId) {
-      window.location.pathname = "/"
+    if (!artistId) {
+      window.location.pathname = '/';
     }
 
     fetchArtists(artistId).then((res) => {
@@ -54,19 +53,17 @@ const Artists = (props) => {
             <SongsWrapper>
               <Title>Músicas</Title>
               {songs &&
-                songs.map((song, index) => {
-                  return (
-                    <Link
-                      key={song._id}
-                      to={{ pathname: "/songs", state: { songId: song._id } }}
-                    >
-                      <SongName>
-                        <Index>{index + 1}</Index>
-                        {song.name}
-                      </SongName>
-                    </Link>
-                  );
-                })}
+                songs.map((song, index) => (
+                  <Link
+                    key={song._id}
+                    to={{ pathname: '/songs', state: { songId: song._id } }}
+                  >
+                    <SongName>
+                      <Index>{index + 1}</Index>
+                      {song.name}
+                    </SongName>
+                  </Link>
+                ))}
             </SongsWrapper>
           </Col>
         </Container>
@@ -75,10 +72,10 @@ const Artists = (props) => {
           <Col
             md={12}
             style={{
-              display: "flex",
-              justifyContent: "center",
+              display: 'flex',
+              justifyContent: 'center',
               marginTop: 100,
-              height: 700
+              height: 700,
             }}
           >
             <Spinner animation="border" color="#5959be" />
