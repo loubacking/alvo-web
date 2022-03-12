@@ -28,7 +28,9 @@ const Home = () => {
         </Row>
         <Row>
           <Col md={{ span: 10, offset: 1 }}>
-            <Title>Aprenda a tocar e cantar suas músicas favoritas de Alvo</Title>
+            <Title>
+              Aprenda a tocar e cantar suas músicas favoritas de Alvo
+            </Title>
           </Col>
         </Row>
         <Row>
