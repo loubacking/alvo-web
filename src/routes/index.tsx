@@ -7,7 +7,7 @@ import Songs from '../containers/Songs';
 import AdminArtists from '../containers/Admin/Artists';
 import AdminSongs from '../containers/Admin/Songs';
 
-function Routes() {
+const Routes: React.FC = () => {
   return (
     <>
       <Route exact path="/" component={Home} />

@@ -3,7 +3,11 @@ import { Col } from "react-bootstrap";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { FooterContainer, FooterText } from "./styled";
 
-const Footer = ({ absolute }) => {
+interface FooterTypes {
+  absolute?: boolean;
+}
+
+const Footer = ({ absolute }: FooterTypes) => {
   return (
     <FooterContainer absolute={absolute}>
       <Col style={{ textAlign: "center", paddingTop: 10 }}>

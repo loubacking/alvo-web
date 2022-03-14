@@ -3,7 +3,7 @@ import './App.css';
 import HttpsRedirect from 'react-https-redirect';
 import Routes from './routes';
 
-function App() {
+const App = () => {
   return (
     <HttpsRedirect>
       <Routes />

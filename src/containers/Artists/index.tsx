@@ -53,7 +53,7 @@ const Artists = (props) => {
             <SongsWrapper>
               <Title>Músicas</Title>
               {songs &&
-                songs.map((song, index) => (
+                songs.map((song: any, index: any) => (
                   <Link
                     key={song._id}
                     to={{ pathname: '/songs', state: { songId: song._id } }}

@@ -12,7 +12,7 @@ import { Logo, Title } from './styled';
 import { useEffect } from 'react';
 
 const Home = () => {
-  const [artists, setArtists] = useState();
+  const [artists, setArtists] = useState<any>([]);
 
   useEffect(() => {
     fetchAllArtists().then(({ data }) => setArtists(data));

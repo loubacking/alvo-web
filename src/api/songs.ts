@@ -5,12 +5,12 @@ const fetchAllSongs = async () => {
   return res;
 };
 
-const fetchSongs = async (id) => {
+const fetchSongs = async (id: string) => {
   const res = await Client.get('songs/' + id);
   return res;
 };
 
-const createSong = async (data) => {
+const createSong = async (data: any) => {
   const res = await Client.post('songs/', data);
   return res;
 }

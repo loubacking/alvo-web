@@ -5,17 +5,17 @@ const fetchAllArtists = async () => {
   return res;
 };
 
-const fetchArtists = async (id) => {
+const fetchArtists = async (id: string) => {
     const res = await Client.get('artists/' + id);
     return res;
   };
 
-const fetchAllSongsArtists = async (id) => {
+const fetchAllSongsArtists = async (id: string) => {
     const res = await Client.get('artists/' + id + '/songs');
     return res;
 };
 
-const createArtist = async (name, image) => {
+const createArtist = async (name: string, image: any) => {
   const res = await Client.post('artists', { name, image });
   return res;
 };

@@ -14,17 +14,17 @@ const searchArtistRequest = () => ({
     type: SEARCH_ARTIST_REQUEST
 });
 
-const searchArtistSuccess = (artists) => ({
+const searchArtistSuccess = (artists: any) => ({
     type: SEARCH_ARTIST_SUCCESS,
     artists
 });
 
-const searchArtistFailed = (error) => ({
+const searchArtistFailed = (error: any) => ({
     type: SEARCH_ARTIST_FAILED,
     error
 });
 
-export const searchArtistAction = (data) => async (dispatch) => {
+export const searchArtistAction = (data: any) => async (dispatch: any) => {
     try {
         dispatch(searchArtistRequest());
         const response = await searchArtist(data);
@@ -42,17 +42,17 @@ const searchSongRequest = () => ({
     type: SEARCH_SONG_REQUEST
 });
 
-const searchSongSuccess = (songs) => ({
+const searchSongSuccess = (songs: any) => ({
     type: SEARCH_SONG_SUCCESS,
     songs
 });
 
-const searchSongFailed = (error) => ({
+const searchSongFailed = (error: any) => ({
     type: SEARCH_SONG_FAILED,
     error
 });
 
-export const searchSongAction = (data) => async (dispatch) => {
+export const searchSongAction = (data: any) => async (dispatch: any) => {
     try {
         dispatch(searchSongRequest());
         const response = await searchSong(data);

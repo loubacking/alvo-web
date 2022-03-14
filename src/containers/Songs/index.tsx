@@ -48,7 +48,7 @@ const Songs = ({ location }) => {
     });
   }, [location.state]);
 
-  const toggleLyrics = (value) => {
+  const toggleLyrics = (value: string) => {
     const verify = value === 'Letra';
     setIsLyrics(verify);
   };
@@ -82,7 +82,7 @@ const Songs = ({ location }) => {
                 formattedLyrics ? (
                   <Lyrics dangerouslySetInnerHTML={{ __html: formattedLyrics }} />
                 ) : (
-                  <Spinner animation="border" variant="secondary" size="md" />
+                  <Spinner animation="border" variant="secondary" />
                 )
               ) : (
                 <Chords dangerouslySetInnerHTML={{ __html: formattedChords }} />

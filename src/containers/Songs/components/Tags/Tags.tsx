@@ -2,10 +2,15 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Tag } from './styled';
 
-const Tags = ({ tags, toggleLyrics }) => {
+interface TagsType {
+  tags: string[];
+  toggleLyrics: (tagName: string) => void;
+}
+
+const Tags = ({ tags, toggleLyrics }: TagsType) => {
   const [selectedTagName, setSelectedTagName] = useState("Letra");
 
-  const selectTag = tagName => {
+  const selectTag = (tagName: string) => {
     if (tagName !== 'Letra') {
       setSelectedTagName("Cifra");
     } else {
@@ -14,7 +19,7 @@ const Tags = ({ tags, toggleLyrics }) => {
     toggleLyrics(tagName);
   };
 
-  const isSelected = tag => selectedTagName.includes(tag);
+  const isSelected = (tag: string) => selectedTagName.includes(tag);
 
   return (
     <>
