@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import { SearchForm, RecentSearchSkeleton } from './components';
-import { Footer } from '../../components';
+import { Footer, Button } from '../../components';
 import { fetchAllArtists } from '../../api/artists';
 
 import logo from '../../assets/images/logo-alvo.png';
@@ -22,8 +22,15 @@ const Home = () => {
     <>
       <Container>
         <Row>
-          <Col style={styles.logo} md={{ span: 10, offset: 1 }}>
+          <Col
+            style={styles.logo}
+            className="d-flex justify-content-between"
+            md={{ span: 10, offset: 1 }}
+          >
             <Logo src={logo} alt="Alvo Cifras Logo" />
+            <Link to={{ pathname: '/songs' }}>
+              <Button title="Login" />
+            </Link>
           </Col>
         </Row>
         <Row>
@@ -68,11 +75,17 @@ export default Home;
 
 const styles = {
   logo: {
+    justifyContent: 'space-between',
     marginTop: 50,
     marginBottom: 25,
     fontFamily: 'Arial, sans-serif',
     fontWeight: 600,
     fontSize: 20,
+  },
+  signInButton: {
+    background: '#5959be',
+    height: 40,
+    width: 100,
   },
   title: {
     fontFamily: 'Arial, sans-serif',
