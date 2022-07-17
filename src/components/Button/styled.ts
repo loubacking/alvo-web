@@ -10,12 +10,13 @@ type TitleType = {
   color?: string;
 };
 
-export const SignInButton = styled.div<ContainerType>`
+export const ContainerButton = styled.div<ContainerType>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
+  width: auto;
   height: 40px;
+  padding: 0 10px;
   background: ${(props) => (props.background ? props.background : '#5959be')};
   border-radius: 5px;
   cursor: pointer;

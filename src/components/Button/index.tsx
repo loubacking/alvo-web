@@ -1,5 +1,5 @@
 import React from 'react';
-import { SignInButton, TitleButton } from './styled';
+import { ContainerButton, TitleButton } from './styled';
 
 export type ButtonProps = {
   title: string;
@@ -18,7 +18,7 @@ const Button = ({
   hoverBackground,
   onClick,
 }: ButtonProps) => (
-  <SignInButton
+  <ContainerButton
     onClick={onClick}
     background={background}
     hoverBackground={hoverBackground}
@@ -26,7 +26,7 @@ const Button = ({
     <TitleButton fontSize={fontSize} color={color}>
       {title}
     </TitleButton>
-  </SignInButton>
+  </ContainerButton>
 );
 
 export default Button;
