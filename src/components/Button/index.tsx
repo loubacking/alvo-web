@@ -7,7 +7,7 @@ export type ButtonProps = {
   color?: string;
   background?: string;
   hoverBackground?: string;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 const Button = ({
