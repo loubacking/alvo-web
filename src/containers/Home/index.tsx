@@ -28,7 +28,7 @@ const Home = () => {
             md={{ span: 10, offset: 1 }}
           >
             <Logo src={logo} alt="Alvo Cifras Logo" />
-            <Link to={{ pathname: '/songs' }}>
+            <Link to={{ pathname: '/artists' }}>
               <Button title="Login" />
             </Link>
           </Col>
@@ -75,17 +75,11 @@ export default Home;
 
 const styles = {
   logo: {
-    justifyContent: 'space-between',
     marginTop: 50,
     marginBottom: 25,
     fontFamily: 'Arial, sans-serif',
     fontWeight: 600,
     fontSize: 20,
-  },
-  signInButton: {
-    background: '#5959be',
-    height: 40,
-    width: 100,
   },
   title: {
     fontFamily: 'Arial, sans-serif',
