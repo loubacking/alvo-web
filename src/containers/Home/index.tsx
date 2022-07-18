@@ -28,9 +28,14 @@ const Home = () => {
             md={{ span: 10, offset: 1 }}
           >
             <Logo src={logo} alt="Alvo Cifras Logo" />
-            <Link to={{ pathname: '/artists' }}>
-              <Button title="Login" />
-            </Link>
+            <div className="row align-items-center">
+              <Link style={styles.suggestionText} to={{ pathname: '' }}>
+                <span style={{ marginRight: 20 }}>Entrar</span>
+              </Link>
+              <Link to={{ pathname: '/register' }}>
+                <Button title="Cadastrar" />
+              </Link>
+            </div>
           </Col>
         </Row>
         <Row>
