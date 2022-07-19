@@ -1,6 +1,6 @@
 import { REGEX_REGULAR_NAME, REGEX_SPECIAL_CHARACTERS } from "../constants/constants"
 
-function validationName(name:string): boolean {
+function validationFullName(name:string): boolean {
   const nameTrim = name.trim()
 
   if(nameTrim.length == 0) {
@@ -22,4 +22,4 @@ const validationEmail = () => {
 
 }
 
-export {validationName, validationEmail}
+export {validationFullName, validationEmail}
