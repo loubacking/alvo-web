@@ -36,3 +36,17 @@ export const IconWrapper = styled.span`
   color: #5959be;
   font-size: 16px;
 `;
+
+export const ErrorMessage = styled.h5`
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #f71919;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  margin-top: 5px;
+  padding-left: 5px;
+  @media (max-width: 450px) {
+    font-size: 14px;
+  }
+`;
