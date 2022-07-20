@@ -3,6 +3,8 @@ import styled from 'styled-components';
 type ContainerType = {
   background?: string;
   hoverBackground?: string;
+  marginTop?: number;
+  marginBottom?: number; 
 };
 
 type TitleType = {
@@ -17,6 +19,8 @@ export const ContainerButton = styled.div<ContainerType>`
   width: auto;
   height: 40px;
   padding: 0 10px;
+  margin-top: ${(props) => (props.marginTop ? props.marginTop : 0)}px;
+  margin-bottom: ${(props) => (props.marginBottom ? props.marginBottom : 0)}px;;
   background: ${(props) => (props.background ? props.background : '#5959be')};
   border-radius: 5px;
   cursor: pointer;

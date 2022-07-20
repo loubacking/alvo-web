@@ -7,6 +7,8 @@ export type ButtonProps = {
   color?: string;
   background?: string;
   hoverBackground?: string;
+  marginTop?: number;
+  marginBottom?: number;
   onClick?: () => void;
 };
 
@@ -16,12 +18,16 @@ const Button = ({
   color,
   background,
   hoverBackground,
+  marginTop,
+  marginBottom,
   onClick,
 }: ButtonProps) => (
   <ContainerButton
     onClick={onClick}
     background={background}
     hoverBackground={hoverBackground}
+    marginTop={marginTop}
+    marginBottom={marginBottom}
   >
     <TitleButton fontSize={fontSize} color={color}>
       {title}
