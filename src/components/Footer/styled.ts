@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
-export const FooterContainer = styled.footer`
-  position: fixed;
+type ContainerType = {
+  absolute?: boolean;
+}
+
+export const FooterContainer = styled.footer<ContainerType>`
+  position: ${(props) => (props.absolute ? "fixed" : "relative")};
   bottom: 0;
   background-color: #212121;
   width: 100%;
