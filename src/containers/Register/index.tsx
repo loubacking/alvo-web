@@ -8,6 +8,7 @@ import { Button, Footer, InputForm } from '../../components';
 import CheckPassword from './components/CheckPassword';
 import logo from '../../assets/images/logo-alvo.png';
 
+import { createUser } from '../../api/auth';
 import {
   validationEmail,
   validationFullName,
@@ -44,7 +45,7 @@ const Register = () => {
     registerValidation(data);
   };
 
-  const registerValidation = (registerData: RegisterType) => {
+  const registerValidation = async (registerData: RegisterType) => {
     const isValidFullName = validationFullName(registerData.fullName);
     const isValidEmail = validationEmail(registerData.email);
     const isValidPassword = checkPassword;
@@ -62,8 +63,12 @@ const Register = () => {
     }
 
     if (isValidFullName && isValidEmail && isValidPassword) {
-      console.log('Cadastrar');
+      await handleCreateUser(registerData);
     }
+  };
+
+  const handleCreateUser = async (user: RegisterType) => {
+    await createUser(user);
   };
 
   const setEmptyValues = () => {
@@ -113,6 +118,7 @@ const Register = () => {
           label={PASSWORD_LABEL}
           placeholder={PASSWORD_PLACEHOLDER}
           register={register}
+          password
           onChange={(text) => setPassword(text)}
           required
         />
@@ -128,6 +134,7 @@ const Register = () => {
           label={PASSWORD_CONFIRMATION_LABEL}
           placeholder={PASSWORD_CONFIRMATION_PLACEHOLDER}
           register={register}
+          password
           onChange={(text) => setPasswordConfirmation(text)}
           required
         />
