@@ -10,6 +10,7 @@ interface Props {
   icon: React.ReactNode;
   placeholder?: string;
   required?: boolean;
+  password?: boolean;
   error?: string;
   register: UseFormRegister<FieldValues>;
   onChange?: (text: string) => void;
@@ -21,6 +22,7 @@ const InputForm = ({
   icon,
   placeholder,
   required,
+  password,
   error,
   register,
   onChange,
@@ -39,6 +41,7 @@ const InputForm = ({
               onChange(e.target.value);
             }
           }}
+          type={password ? 'password' : ''}
         />
       </InputGroup>
       <ErrorMessage>{error}</ErrorMessage>
