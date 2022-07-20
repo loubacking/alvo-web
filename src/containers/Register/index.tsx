@@ -4,8 +4,7 @@ import { useForm } from 'react-hook-form';
 import { FaEnvelope, FaLock, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-import { Button, Footer } from '../../components';
-import InputForm from '../../components/InputForm/intex';
+import { Button, Footer, InputForm } from '../../components';
 import CheckPassword from './components/CheckPassword';
 import logo from '../../assets/images/logo-alvo.png';
 
