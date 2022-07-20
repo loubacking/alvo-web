@@ -33,7 +33,7 @@ const InputForm = ({
 
       <InputGroup>
         <IconWrapper>{icon}</IconWrapper>
-        <FormInput placeholder={placeholder} {...register(id, { required })} />
+        <FormInput placeholder={placeholder} {...register(id)} />
       </InputGroup>
       <ErrorMessage>{error}</ErrorMessage>
     </Form.Group>

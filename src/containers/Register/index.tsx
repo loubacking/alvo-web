@@ -13,7 +13,7 @@ import {
   validationFullName,
 } from './validations/registerValidation';
 import { RegisterType } from './types/type';
-import { FULL_NAME_ERROR } from './constants/constants';
+import { EMAIL_ERROR, FULL_NAME_ERROR } from './constants/constants';
 
 import { HeaderContainer, Logo, Title } from './styled';
 
@@ -21,6 +21,7 @@ const Register = () => {
   const { register, handleSubmit } = useForm();
 
   const [fullNameError, setFullNameError] = useState<string>('');
+  const [EmailError, setEmailError] = useState<string>('');
 
   const onSubmit = (data) => {
     registerValidation(data);
@@ -28,17 +29,24 @@ const Register = () => {
 
   const registerValidation = (registerData: RegisterType) => {
     const isValidFullName = validationFullName(registerData.fullName);
+    const isValidEmail = validationEmail(registerData.email);
 
     if (!isValidFullName) {
       setFullNameError(FULL_NAME_ERROR);
-      return;
     }
 
-    setEmptyValues();
+    if (!isValidEmail) {
+      setEmailError(EMAIL_ERROR);
+    }
+
+    if (isValidFullName && isValidEmail) {
+      setEmptyValues();
+    }
   };
 
   const setEmptyValues = () => {
     setFullNameError('');
+    setEmailError('');
   };
 
   return (
@@ -56,7 +64,7 @@ const Register = () => {
         <InputForm
           id="fullName"
           icon={<FaUser />}
-          label="Nome *"
+          label="Nome completo *"
           placeholder="Digite seu nome aqui"
           register={register}
           required
@@ -69,6 +77,7 @@ const Register = () => {
           placeholder="Ex: comujovem@gmail.com"
           register={register}
           required
+          error={EmailError}
         />
         <InputForm
           id="password"

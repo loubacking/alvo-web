@@ -1,25 +1,43 @@
-import { REGEX_REGULAR_NAME, REGEX_SPECIAL_CHARACTERS } from "../constants/constants"
+import { REGEX_SPECIAL_CHARACTERS, REGEX_VALIDATE_EMAIL } from "../constants/constants"
+
+
+function isEmpty(str: string): boolean {
+  return str.length == 0
+}
+
+function containsSpecialCharacters(str: string): boolean {
+  return str.match(REGEX_SPECIAL_CHARACTERS) !== null
+}
+
+function isRegularEmail(email: string): boolean {
+  console.log("aqui",email.match(REGEX_VALIDATE_EMAIL) !== null)
+  return email.match(REGEX_VALIDATE_EMAIL) !== null
+}
 
 function validationFullName(name:string): boolean {
   const nameTrim = name.trim()
 
-  if(nameTrim.length == 0) {
+  if(isEmpty(nameTrim)) {
     return false
-  }
-
-  if(nameTrim.match(REGEX_REGULAR_NAME)) {
+  } else if(containsSpecialCharacters(nameTrim)){
     return false
-  }
-
-  if(nameTrim.match(REGEX_SPECIAL_CHARACTERS)){
-    return false
-  }
+  } 
 
   return true
 }
 
-const validationEmail = () => {
+const validationEmail = (email:string) => {
+  const emailTrim = email.trim()
 
+  if(isEmpty(emailTrim)){
+    return false
+  }
+
+  if(!isRegularEmail(emailTrim)) {
+    return false
+  }
+
+  return true
 }
 
 export {validationFullName, validationEmail}
