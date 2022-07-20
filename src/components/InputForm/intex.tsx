@@ -4,11 +4,7 @@ import { UseFormRegister, FieldValues } from 'react-hook-form';
 
 import { ErrorMessage, FormInput, IconWrapper } from './styled';
 
-interface Props
-  extends React.DetailedHTMLProps<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
-  > {
+interface Props {
   id: string;
   label: string;
   icon: React.ReactNode;
@@ -16,6 +12,7 @@ interface Props
   required?: boolean;
   error?: string;
   register: UseFormRegister<FieldValues>;
+  onChange?: (text: string) => void;
 }
 
 const InputForm = ({
@@ -26,6 +23,7 @@ const InputForm = ({
   required,
   error,
   register,
+  onChange,
 }: Props) => {
   return (
     <Form.Group>
@@ -33,7 +31,15 @@ const InputForm = ({
 
       <InputGroup>
         <IconWrapper>{icon}</IconWrapper>
-        <FormInput placeholder={placeholder} {...register(id)} />
+        <FormInput
+          {...register(id)}
+          placeholder={placeholder}
+          onChange={(e) => {
+            if (onChange !== undefined) {
+              onChange(e.target.value);
+            }
+          }}
+        />
       </InputGroup>
       <ErrorMessage>{error}</ErrorMessage>
     </Form.Group>

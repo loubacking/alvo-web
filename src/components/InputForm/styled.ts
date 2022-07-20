@@ -41,7 +41,7 @@ export const ErrorMessage = styled.h5`
   font-family: Arial, sans-serif;
   font-size: 13px;
   font-weight: 500;
-  color: #f71919;
+  color: #CC3A3A;
   letter-spacing: 0.5px;
   line-height: 1;
   margin-top: 5px;
