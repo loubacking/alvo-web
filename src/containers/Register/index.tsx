@@ -6,14 +6,28 @@ import { Link } from 'react-router-dom';
 
 import { Button, Footer } from '../../components';
 import InputForm from '../../components/InputForm/intex';
+import CheckPassword from './components/CheckPassword';
 import logo from '../../assets/images/logo-alvo.png';
 
 import {
   validationEmail,
   validationFullName,
 } from './validations/registerValidation';
-import { RegisterType } from './types/type';
-import { EMAIL_ERROR, FULL_NAME_ERROR } from './constants/constants';
+
+import {
+  EMAIL_ERROR,
+  EMAIL_LABEL,
+  EMAIL_PLACEHOLDER,
+  FULL_NAME_ERROR,
+  FULL_NAME_LABEL,
+  FULL_NAME_PLACEHOLDER,
+  PASSWORD_CONFIRMATION_LABEL,
+  PASSWORD_CONFIRMATION_PLACEHOLDER,
+  PASSWORD_LABEL,
+  PASSWORD_PLACEHOLDER,
+  REGISTER_BUTTON_TEXT,
+} from './constants';
+import { RegisterType } from './types';
 
 import { HeaderContainer, Logo, Title } from './styled';
 
@@ -23,6 +37,10 @@ const Register = () => {
   const [fullNameError, setFullNameError] = useState<string>('');
   const [EmailError, setEmailError] = useState<string>('');
 
+  const [password, setPassword] = useState<string>('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
+  const [checkPassword, setCheckPassword] = useState<boolean>(false);
+
   const onSubmit = (data) => {
     registerValidation(data);
   };
@@ -30,6 +48,7 @@ const Register = () => {
   const registerValidation = (registerData: RegisterType) => {
     const isValidFullName = validationFullName(registerData.fullName);
     const isValidEmail = validationEmail(registerData.email);
+    const isValidPassword = checkPassword;
 
     if (!isValidFullName) {
       setFullNameError(FULL_NAME_ERROR);
@@ -42,6 +61,10 @@ const Register = () => {
     if (isValidFullName && isValidEmail) {
       setEmptyValues();
     }
+
+    if (isValidFullName && isValidEmail && isValidPassword) {
+      console.log('Cadastrar');
+    }
   };
 
   const setEmptyValues = () => {
@@ -49,9 +72,13 @@ const Register = () => {
     setEmailError('');
   };
 
+  const handleCheckedValidationPassword = (isChecked: boolean) => {
+    setCheckPassword(isChecked);
+  };
+
   return (
     <>
-      <Container>
+      <Container className="mb-5">
         <Row>
           <HeaderContainer>
             <Title>Registrar</Title>
@@ -64,41 +91,60 @@ const Register = () => {
         <InputForm
           id="fullName"
           icon={<FaUser />}
-          label="Nome completo *"
-          placeholder="Digite seu nome aqui"
+          label={FULL_NAME_LABEL}
+          placeholder={FULL_NAME_PLACEHOLDER}
           register={register}
           required
           error={fullNameError}
         />
+
         <InputForm
           id="email"
           icon={<FaEnvelope />}
-          label="Email *"
-          placeholder="Ex: comujovem@gmail.com"
+          label={EMAIL_LABEL}
+          placeholder={EMAIL_PLACEHOLDER}
           register={register}
           required
           error={EmailError}
         />
+
         <InputForm
           id="password"
           icon={<FaLock />}
-          label="Senha *"
-          placeholder="Mínimo 6 digitos..."
+          label={PASSWORD_LABEL}
+          placeholder={PASSWORD_PLACEHOLDER}
           register={register}
+          onChange={(text) => setPassword(text)}
           required
         />
+        <CheckPassword
+          password={password}
+          passwordConfirmation={passwordConfirmation}
+          isCheckPassword={handleCheckedValidationPassword}
+        />
+
         <InputForm
           id="passwordConfirmation"
           icon={<FaLock />}
-          label="Confirmar senha *"
-          placeholder="Mínimo 6 digitos..."
+          label={PASSWORD_CONFIRMATION_LABEL}
+          placeholder={PASSWORD_CONFIRMATION_PLACEHOLDER}
           register={register}
+          onChange={(text) => setPasswordConfirmation(text)}
           required
         />
+        <CheckPassword
+          password={password}
+          passwordConfirmation={passwordConfirmation}
+          isCheckPassword={handleCheckedValidationPassword}
+        />
 
-        <Button title="Cadastrar" onClick={handleSubmit(onSubmit)} />
+        <Button
+          title={REGISTER_BUTTON_TEXT}
+          onClick={handleSubmit(onSubmit)}
+          marginTop={30}
+        />
       </Container>
-      <Footer absolute />
+      <Footer />
     </>
   );
 };
