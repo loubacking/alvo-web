@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { FaEnvelope, FaLock, FaUser } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { Button, Footer, InputForm } from '../../components';
 import CheckPassword from './components/CheckPassword';
@@ -33,6 +33,7 @@ import { HeaderContainer, Logo, Title } from './styled';
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
+  const history = useHistory();
 
   const [fullNameError, setFullNameError] = useState<string>('');
   const [EmailError, setEmailError] = useState<string>('');
@@ -40,6 +41,9 @@ const Register = () => {
   const [password, setPassword] = useState<string>('');
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
   const [checkPassword, setCheckPassword] = useState<boolean>(false);
+
+  const [loading, setLoading] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean>(false);
 
   const onSubmit = (data) => {
     registerValidation(data);
@@ -68,16 +72,30 @@ const Register = () => {
   };
 
   const handleCreateUser = async (user: RegisterType) => {
-    await createUser(user);
+    setLoading(true);
+    try {
+      await createUser(user);
+      setSuccessCreatedUser();
+      setTimeout(() => {
+        history.push('/');
+      }, 1200);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleCheckedValidationPassword = (isChecked: boolean) => {
+    setCheckPassword(isChecked);
+  };
+
+  const setSuccessCreatedUser = () => {
+    setLoading(false);
+    setSuccess(true);
   };
 
   const setEmptyValues = () => {
     setFullNameError('');
     setEmailError('');
-  };
-
-  const handleCheckedValidationPassword = (isChecked: boolean) => {
-    setCheckPassword(isChecked);
   };
 
   return (
@@ -147,6 +165,8 @@ const Register = () => {
         <Button
           title={REGISTER_BUTTON_TEXT}
           onClick={handleSubmit(onSubmit)}
+          loading={loading}
+          success={success}
           marginTop={30}
         />
       </Container>
