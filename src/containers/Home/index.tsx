@@ -29,7 +29,7 @@ const Home = () => {
           >
             <Logo src={logo} alt="Alvo Cifras Logo" />
             <div className="row align-items-center">
-              <Link style={styles.suggestionText} to={{ pathname: '' }}>
+              <Link style={styles.suggestionText} to={{ pathname: '/login' }}>
                 <span style={{ marginRight: 20 }}>Entrar</span>
               </Link>
               <Link to={{ pathname: '/register' }}>
