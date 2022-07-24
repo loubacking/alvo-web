@@ -12,4 +12,7 @@ export const TITLE_BUTTON = "Entrar"
 // ERROR
 export const ERROR_DATA = 'Email ou senha incorretos. por favor, tente novamente.'
 
+// REGISTER
+export const REGISTER = "Não tem cadastro? Faça agora!"
+
 
