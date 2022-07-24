@@ -17,7 +17,6 @@ export default function reducer(state = {}, action) {
           isSearching: true
         };
       case AUTH_TOKEN:
-        console.log("Esse e o action",action.authToken)
         return {
           ...state,
           authToken: action.authToken

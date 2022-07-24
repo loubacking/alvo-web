@@ -31,6 +31,9 @@ const Button = ({
   const [backgroundButton, setBackGroundButton] = useState<string | undefined>(
     background,
   );
+  const [hoverBackgroundButton, setHoverBackGroundButton] = useState<
+    string | undefined
+  >(hoverBackground);
   const [showSuccessButton, setShowSuccessButton] = useState<boolean>(false);
 
   useEffect(() => {
@@ -45,6 +48,7 @@ const Button = ({
     if (status) {
       setShowSuccessButton(true);
       setBackGroundButton('#21AB2F');
+      setHoverBackGroundButton('#21AB2F');
     }
   };
 
@@ -52,7 +56,7 @@ const Button = ({
     <ContainerButton
       onClick={onClick}
       background={backgroundButton}
-      hoverBackground={hoverBackground}
+      hoverBackground={hoverBackgroundButton}
       marginTop={marginTop}
       marginBottom={marginBottom}
     >

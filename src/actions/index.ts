@@ -75,7 +75,6 @@ export const saveAuthToken = (authToken: string) => async (dispatch: any) => {
     try {
         dispatch(authTokenType(authToken));
     } catch (error) {
-        dispatch(searchSongFailed(error));
         return { error };
     }
 };

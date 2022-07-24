@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import { SearchForm, RecentSearchSkeleton } from './components';
+import { SearchForm, RecentSearchSkeleton, UserOption } from './components';
 import { Footer, Button } from '../../components';
 import { fetchAllArtists } from '../../api/artists';
 
@@ -10,9 +10,11 @@ import logo from '../../assets/images/logo-alvo.png';
 import '../../App.css';
 import { Logo, Title } from './styled';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
   const [artists, setArtists] = useState<any>([]);
+  const { authToken } = useSelector((state: any) => state.unique);
 
   useEffect(() => {
     fetchAllArtists().then(({ data }) => setArtists(data));
@@ -28,14 +30,19 @@ const Home = () => {
             md={{ span: 10, offset: 1 }}
           >
             <Logo src={logo} alt="Alvo Cifras Logo" />
-            <div className="row align-items-center">
-              <Link style={styles.suggestionText} to={{ pathname: '/login' }}>
-                <span style={{ marginRight: 20 }}>Entrar</span>
-              </Link>
-              <Link to={{ pathname: '/register' }}>
-                <Button title="Cadastrar" />
-              </Link>
-            </div>
+
+            {authToken ? (
+              <UserOption />
+            ) : (
+              <div className="row align-items-center">
+                <Link style={styles.suggestionText} to={{ pathname: '/login' }}>
+                  <span style={{ marginRight: 20 }}>Entrar</span>
+                </Link>
+                <Link to={{ pathname: '/register' }}>
+                  <Button title="Cadastrar" />
+                </Link>
+              </div>
+            )}
           </Col>
         </Row>
         <Row>

@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const Tag = styled.div`
+type TagType = {
+  dark: boolean
+}
+
+export const Tag = styled.div<TagType>`
   padding: 0 10px;
   line-height: 22px;
   text-align: center;
