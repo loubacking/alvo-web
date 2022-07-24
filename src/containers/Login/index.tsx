@@ -17,6 +17,7 @@ import {
   ERROR_DATA,
   PASSWORD_LABEL,
   PASSWORD_PLACEHOLDER,
+  REGISTER,
   TITLE_BUTTON,
 } from './constants';
 import { LoginTypes } from './types';
@@ -100,7 +101,7 @@ const Login = () => {
             style={{ color: '#5959BE' }}
             to={{ pathname: '/register' }}
           >
-            <span>Não tem cadastro? Faça agora!</span>
+            <span>{REGISTER}</span>
           </SuggestionText>
           <Button
             title={TITLE_BUTTON}
