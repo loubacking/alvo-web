@@ -11,7 +11,7 @@ export var FULL_NAME_ERROR = "Nome inválido. Digite o seu nome completo e evite
 export var EMAIL_ERROR = "Email inválido. O email precisa conter os caracteres '@' e '.', exemplo: comujovem@gmail.com";
 
 // Tags de validação de senha
-export var CHECK_MIN_LENGTH = 'Contém no mínimo de 6 dígitos.';
+export var CHECK_MIN_LENGTH = 'Contém no mínimo 6 dígitos.';
 export var INIT_BIG_LETTER = 'Começa com letra maiúscula.';
 export var EQUALS_PASSWORD = 'Senha e confirmação de senha são iguals.';
 
