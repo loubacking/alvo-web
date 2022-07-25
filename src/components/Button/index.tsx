@@ -7,7 +7,7 @@ export type ButtonProps = {
   title: string;
   fontSize?: number;
   color?: string;
-  background?: string;
+  backgroundColor?: string;
   hoverBackground?: string;
   loading?: boolean;
   success?: boolean;
@@ -20,7 +20,7 @@ const Button = ({
   title,
   fontSize,
   color,
-  background,
+  backgroundColor,
   hoverBackground,
   loading,
   success,
@@ -29,7 +29,7 @@ const Button = ({
   onClick,
 }: ButtonProps) => {
   const [backgroundButton, setBackGroundButton] = useState<string | undefined>(
-    background,
+    backgroundColor,
   );
   const [hoverBackgroundButton, setHoverBackGroundButton] = useState<
     string | undefined
@@ -55,7 +55,7 @@ const Button = ({
   return (
     <ContainerButton
       onClick={onClick}
-      background={backgroundButton}
+      backgroundColor={backgroundButton}
       hoverBackground={hoverBackgroundButton}
       marginTop={marginTop}
       marginBottom={marginBottom}

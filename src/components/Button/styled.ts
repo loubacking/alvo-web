@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 type ContainerType = {
-  background?: string;
+  backgroundColor?: string;
   hoverBackground?: string;
   marginTop?: number;
   marginBottom?: number; 
@@ -21,7 +21,7 @@ export const ContainerButton = styled.div<ContainerType>`
   padding: 0 10px;
   margin-top: ${(props) => (props.marginTop ? props.marginTop : 0)}px;
   margin-bottom: ${(props) => (props.marginBottom ? props.marginBottom : 0)}px;;
-  background: ${(props) => (props.background ? props.background : '#5959be')};
+  background: ${(props) => (props.backgroundColor ? props.backgroundColor : '#5959be')};
   border-radius: 5px;
   cursor: pointer;
   &:hover {
