@@ -80,7 +80,8 @@ const Register = () => {
         history.push('/');
       }, 1200);
     } catch (error) {
-      console.error(error);
+      setEmailError(EMAIL_ERROR);
+      setLoading(false);
     }
   };
 
