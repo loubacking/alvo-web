@@ -10,8 +10,8 @@ import logo from '../../assets/images/logo-alvo.png';
 
 import { createUser } from '../../api/auth';
 import {
-  validationEmail,
-  validationFullName,
+  validateEmail,
+  validateFullName,
 } from './validations/registerValidation';
 
 import {
@@ -50,8 +50,8 @@ const Register = () => {
   };
 
   const registerValidation = async (registerData: RegisterType) => {
-    const isValidFullName = validationFullName(registerData.fullName);
-    const isValidEmail = validationEmail(registerData.email);
+    const isValidFullName = validateFullName(registerData.fullName);
+    const isValidEmail = validateEmail(registerData.email);
     const isValidPassword = checkPassword;
 
     if (!isValidFullName) {
