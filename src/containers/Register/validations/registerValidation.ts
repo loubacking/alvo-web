@@ -1,7 +1,4 @@
-import {
-  REGEX_SPECIAL_CHARACTERS,
-  REGEX_VALIDATE_EMAIL,
-} from '../constants';
+import { REGEX_SPECIAL_CHARACTERS, REGEX_VALIDATE_EMAIL } from '../constants';
 
 function isEmpty(str: string): boolean {
   return str.length == 0;
@@ -15,7 +12,7 @@ function isRegularEmail(email: string): boolean {
   return email.match(REGEX_VALIDATE_EMAIL) !== null;
 }
 
-function validationFullName(name: string): boolean {
+function validateFullName(name: string): boolean {
   if (isEmpty(name.trim())) {
     return false;
   } else if (containsSpecialCharacters(name.trim())) {
@@ -25,7 +22,7 @@ function validationFullName(name: string): boolean {
   return true;
 }
 
-const validationEmail = (email: string) => {
+function validateEmail(email: string): boolean {
   if (isEmpty(email.trim())) {
     return false;
   } else if (!isRegularEmail(email.trim())) {
@@ -33,6 +30,6 @@ const validationEmail = (email: string) => {
   }
 
   return true;
-};
+}
 
-export { validationFullName, validationEmail };
+export { validateFullName, validateEmail };
