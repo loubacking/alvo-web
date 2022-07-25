@@ -7,3 +7,10 @@ export type LoginTypes = {
 export type ResLoginType = {
   authToken: string;
 }
+
+export type ResCreateUserType = {
+  id: string;
+  email:string;
+  fullName: string;
+  authToken: string;
+}
