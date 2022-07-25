@@ -64,10 +64,11 @@ const Login = () => {
   };
 
   const handleErrorMessage = (error: number | undefined) => {
+    setLoading(false);
+
     switch (error) {
       case 400:
         setError(ERROR_DATA);
-        setLoading(false);
         return;
       default:
         return;
