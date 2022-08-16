@@ -4,7 +4,8 @@ import
     SEARCH_ARTIST_FAILED,
     SEARCH_SONG_REQUEST,
     SEARCH_SONG_SUCCESS,
-    SEARCH_SONG_FAILED
+    SEARCH_SONG_FAILED,
+    AUTH_TOKEN
    } from './types';
 
 export default function reducer(state = {}, action) {
@@ -15,6 +16,11 @@ export default function reducer(state = {}, action) {
           ...state,
           isSearching: true
         };
+      case AUTH_TOKEN:
+        return {
+          ...state,
+          authToken: action.authToken
+        }
       case SEARCH_ARTIST_SUCCESS:
         return {
           ...state,

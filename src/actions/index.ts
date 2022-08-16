@@ -5,7 +5,8 @@ SEARCH_ARTIST_SUCCESS,
 SEARCH_ARTIST_FAILED,
 SEARCH_SONG_REQUEST,
 SEARCH_SONG_SUCCESS,
-SEARCH_SONG_FAILED
+SEARCH_SONG_FAILED,
+AUTH_TOKEN
 } from '../reducers/types';
 
 // Search Artist
@@ -60,6 +61,20 @@ export const searchSongAction = (data: any) => async (dispatch: any) => {
         return response.data;
     } catch (error) {
         dispatch(searchSongFailed(error));
+        return { error };
+    }
+};
+
+// AUTHTOKEN
+const authTokenType = (authToken: string) => ({
+    type: AUTH_TOKEN,
+    authToken
+});
+
+export const saveAuthToken = (authToken: string) => async (dispatch: any) => {
+    try {
+        dispatch(authTokenType(authToken));
+    } catch (error) {
         return { error };
     }
 };
