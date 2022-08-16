@@ -15,7 +15,7 @@ export var EMAIL_ERROR = "Email inválido. O email precisa conter os caracteres 
 
 // Tags de validação de senha
 export var CHECK_MIN_LENGTH = `Contém no mínimo ${PASSWORD_MIN_LENGTH} dígitos.`;
-export var INIT_BIG_LETTER = 'Começa com letra maiúscula.';
+export var HAS_AT_LEAST_ONE_CAPITAL_LETTER = 'Contém pelo menos uma letra maiúscula.';
 export var EQUALS_PASSWORD = 'Senha e confirmação de senha são iguals.';
 
 // Página de cadastro 

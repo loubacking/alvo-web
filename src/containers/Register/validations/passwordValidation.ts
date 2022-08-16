@@ -7,12 +7,8 @@ function haveMinLength(password: string): boolean {
   return passwordTrim.length >= PASSWORD_MIN_LENGTH;
 }
 
-function isInitBigLetter(password: string): boolean {
-  const passwordTrim = password.trim();
-  if (!isEmpty(passwordTrim)) {
-    return passwordTrim.charAt(0) == passwordTrim.charAt(0).toUpperCase();
-  }
-  return false;
+function hasAtLeastOneCapitalLetter(password: string): boolean {
+  return /[A-Z]+/.test(password);
 }
 
 function checkEqualsPassword(password: string, passwordConfirmation: string) {
@@ -25,5 +21,5 @@ function checkEqualsPassword(password: string, passwordConfirmation: string) {
   return false;
 }
 
-export { haveMinLength, isInitBigLetter, checkEqualsPassword };
+export { haveMinLength, hasAtLeastOneCapitalLetter, checkEqualsPassword };
 export const PASSWORD_MIN_LENGTH: number = 6;

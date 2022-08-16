@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import {
   CHECK_MIN_LENGTH,
   EQUALS_PASSWORD,
-  INIT_BIG_LETTER,
+  HAS_AT_LEAST_ONE_CAPITAL_LETTER,
 } from '../../constants';
 
 import {
   checkEqualsPassword,
   haveMinLength,
-  isInitBigLetter,
+  hasAtLeastOneCapitalLetter,
 } from '../../validations/passwordValidation';
 import CheckTag from '../CheckTag';
 import { Container } from './styled';
@@ -35,23 +35,23 @@ const CheckPassword = ({
   const handleCheckTags = () => {
     setCheckMinLength(haveMinLength(password));
 
-    setInitBigLetter(isInitBigLetter(password));
+    setInitBigLetter(hasAtLeastOneCapitalLetter(password));
 
     setEqualsPassword(checkEqualsPassword(password, passwordConfirmation));
 
     isChecked(
       haveMinLength(password),
-      isInitBigLetter(password),
+      hasAtLeastOneCapitalLetter(password),
       checkEqualsPassword(password, passwordConfirmation),
     );
   };
 
   const isChecked = (
     isCheckMinLength: boolean,
-    isInitBigLetter: boolean,
+    hasAtLeastOneCapitalLetter: boolean,
     isCheckEqualsPassword: boolean,
   ) => {
-    if (isCheckMinLength && isInitBigLetter && isCheckEqualsPassword) {
+    if (isCheckMinLength && hasAtLeastOneCapitalLetter && isCheckEqualsPassword) {
       isCheckPassword(true);
     }
   };
@@ -59,7 +59,7 @@ const CheckPassword = ({
   return (
     <Container>
       <CheckTag title={CHECK_MIN_LENGTH} status={checkMinLength} />
-      <CheckTag title={INIT_BIG_LETTER} status={initBigLetter} />
+      <CheckTag title={HAS_AT_LEAST_ONE_CAPITAL_LETTER} status={initBigLetter} />
       <CheckTag title={EQUALS_PASSWORD} status={equalsPassword} />
     </Container>
   );
