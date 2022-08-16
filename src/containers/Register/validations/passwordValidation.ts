@@ -4,7 +4,7 @@ function isEmpty(str: string): boolean {
 
 function haveMinLength(password: string): boolean {
   const passwordTrim = password.trim();
-  return passwordTrim.length >= 6;
+  return passwordTrim.length >= PASSWORD_MIN_LENGTH;
 }
 
 function isInitBigLetter(password: string): boolean {
@@ -26,3 +26,4 @@ function checkEqualsPassword(password: string, passwordConfirmation: string) {
 }
 
 export { haveMinLength, isInitBigLetter, checkEqualsPassword };
+export const PASSWORD_MIN_LENGTH: number = 6;

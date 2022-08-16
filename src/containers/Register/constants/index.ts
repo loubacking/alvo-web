@@ -1,4 +1,7 @@
 // Regex 
+
+import { PASSWORD_MIN_LENGTH } from "../validations/passwordValidation";
+
 //validation register
 export var REGEX_SPECIAL_CHARACTERS = /(?=.*[}{,.^?~=+@\\-_\/*\-+.\\|])(?=.*)./g;
 export var REGEX_VALIDATE_EMAIL = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -11,7 +14,7 @@ export var FULL_NAME_ERROR = "Nome inválido. Digite o seu nome completo e evite
 export var EMAIL_ERROR = "Email inválido. O email precisa conter os caracteres '@' e '.', exemplo: comujovem@gmail.com";
 
 // Tags de validação de senha
-export var CHECK_MIN_LENGTH = 'Contém no mínimo 6 dígitos.';
+export var CHECK_MIN_LENGTH = `Contém no mínimo ${PASSWORD_MIN_LENGTH} dígitos.`;
 export var INIT_BIG_LETTER = 'Começa com letra maiúscula.';
 export var EQUALS_PASSWORD = 'Senha e confirmação de senha são iguals.';
 
@@ -26,8 +29,8 @@ export var PASSWORD_CONFIRMATION_LABEL = 'Confirmar senha *';
 // PLACEHOLDER
 export var FULL_NAME_PLACEHOLDER = 'Digite seu nome aqui';
 export var EMAIL_PLACEHOLDER = 'Ex: comujovem@gmail.com';
-export var PASSWORD_PLACEHOLDER = 'Mínimo 6 digitos...';
-export var PASSWORD_CONFIRMATION_PLACEHOLDER = 'Mínimo 6 digitos...';
+export var PASSWORD_PLACEHOLDER = `Mínimo ${PASSWORD_MIN_LENGTH} digitos...`;
+export var PASSWORD_CONFIRMATION_PLACEHOLDER = `Mínimo ${PASSWORD_MIN_LENGTH} digitos...`;
 
 // TITLE
 export var REGISTER_BUTTON_TEXT = 'Cadastrar';
