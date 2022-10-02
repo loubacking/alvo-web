@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaAngleDown } from 'react-icons/fa';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import jwt from 'jwt-decode';
 
 import user from '../../../../assets/images/userIcon.png';
-import { saveAuthToken } from '../../../../actions';
+import { saveTokenAndUserInfo } from '../../../../actions';
 
 import {
   Container,
@@ -23,12 +24,19 @@ const UserOptions = () => {
   const dispatch = useDispatch();
 
   const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [name, setName] = useState('');
 
   const registerSong = () => history.push('/admin/songs');
   const registerArtist = () => history.push('/admin/artists');
 
+  useEffect(() => {
+    const token = cookies.get('AUTH_TOKEN');
+    const { fullName } = jwt(token) as {email: string, fullName: string};
+    setName(fullName.split(' ')[0]);
+  }, []);
+
   const logOut = () => {
-    dispatch(saveAuthToken(''));
+    dispatch(saveTokenAndUserInfo(''));
     cookies.remove(AUTH_TOKEN);
   };
 
@@ -45,7 +53,7 @@ const UserOptions = () => {
       <Container onClick={handleShowMenu}>
         <Image src={user} alt="Alvo Cifras Logo" />
         <ContainerTittle>
-          <Title style={{ color: '#5959BE' }}>Marcelo</Title>
+          <Title style={{ color: '#5959BE' }}>{name}</Title>
           <FaAngleDown color="#5959BE" />
         </ContainerTittle>
       </Container>
