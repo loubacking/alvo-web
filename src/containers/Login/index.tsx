@@ -7,7 +7,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 
 import { Button, Footer, InputForm } from '../../components';
-import { saveAuthToken } from '../../actions';
+import { saveTokenAndUserInfo } from '../../actions';
 import { login } from '../../api/auth';
 import logo from '../../assets/images/logo-alvo1.png';
 
@@ -44,13 +44,13 @@ const Login = () => {
 
     try {
       const req = await login(formData);
-      dispatch(saveAuthToken(req.authToken));
+      dispatch(saveTokenAndUserInfo(req.authToken))
       cookies.set(AUTH_TOKEN, req.authToken);
       setSuccessLogin();
 
       setTimeout(() => {
         history.push('/');
-      }, 1200);
+      }, 1000);
     } catch (error) {
       const { response } = error as AxiosError;
       handleErrorMessage(response?.status);
