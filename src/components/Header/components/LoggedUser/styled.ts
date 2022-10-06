@@ -28,8 +28,8 @@ export const Title = styled.div`
 
 export const MenuContainer = styled.div`
   position: absolute;
-  top: 60px;
-  right: 10px;
+  top: 6rem;
+  right: 7rem;
   width: 135px;
   background: white;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);

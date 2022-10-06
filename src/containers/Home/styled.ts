@@ -1,10 +1,4 @@
-import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
-
-export const Logo = styled.img`
-  width: 180px;
-  aspect-ratio: 3;
-`;
 
 export const Title = styled.div`
   font-family: Arial, sans-serif;

@@ -2,19 +2,16 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import { SearchForm, RecentSearchSkeleton, UserOption } from './components';
-import { Footer, Button } from '../../components';
+import { SearchForm, RecentSearchSkeleton } from './components';
+import { Footer, Header } from '../../components';
 import { fetchAllArtists } from '../../api/artists';
 
-import logo from '../../assets/images/logo-alvo.png';
 import '../../App.css';
-import { Logo, Title } from './styled';
+import { Title } from './styled';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 
 const Home = () => {
   const [artists, setArtists] = useState<any>([]);
-  const { authToken } = useSelector((state: any) => state.unique);
 
   useEffect(() => {
     fetchAllArtists().then(({ data }) => setArtists(data));
@@ -22,29 +19,8 @@ const Home = () => {
 
   return (
     <>
+      <Header />
       <Container>
-        <Row>
-          <Col
-            style={styles.logo}
-            className="d-flex justify-content-between"
-            md={{ span: 10, offset: 1 }}
-          >
-            <Logo src={logo} alt="Alvo Cifras Logo" />
-
-            {authToken ? (
-              <UserOption />
-            ) : (
-              <div className="row align-items-center">
-                <Link style={styles.suggestionText} to={{ pathname: '/login' }}>
-                  <span style={{ marginRight: 20 }}>Entrar</span>
-                </Link>
-                <Link to={{ pathname: '/register' }}>
-                  <Button title="Cadastrar" />
-                </Link>
-              </div>
-            )}
-          </Col>
-        </Row>
         <Row>
           <Col md={{ span: 10, offset: 1 }}>
             <Title>
@@ -86,13 +62,6 @@ const Home = () => {
 export default Home;
 
 const styles = {
-  logo: {
-    marginTop: 50,
-    marginBottom: 25,
-    fontFamily: 'Arial, sans-serif',
-    fontWeight: 600,
-    fontSize: 20,
-  },
   title: {
     fontFamily: 'Arial, sans-serif',
     fontWeight: 600,
@@ -101,9 +70,6 @@ const styles = {
     letterSpacing: 1.23,
     marginBottom: 30,
     lineHeight: 1.2,
-  },
-  search: {
-    borderRadius: 24,
   },
   suggestionTitle: {
     fontFamily: 'Arial, sans-serif',
