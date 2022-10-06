@@ -50,7 +50,7 @@ const Login = () => {
 
       setTimeout(() => {
         history.push('/');
-      }, 1200);
+      }, 1000);
     } catch (error) {
       const { response } = error as AxiosError;
       handleErrorMessage(response?.status);
