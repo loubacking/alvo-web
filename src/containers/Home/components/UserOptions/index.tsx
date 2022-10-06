@@ -30,7 +30,7 @@ const UserOptions = () => {
   const registerArtist = () => history.push('/admin/artists');
 
   useEffect(() => {
-    const token = cookies.get('AUTH_TOKEN');
+    const token = cookies.get(AUTH_TOKEN);
     const { fullName } = jwt(token) as {email: string, fullName: string};
     setName(fullName.split(' ')[0]);
   }, []);
@@ -40,17 +40,13 @@ const UserOptions = () => {
     cookies.remove(AUTH_TOKEN);
   };
 
-  const handleShowMenu = () => {
-    if (showMenu) {
-      setShowMenu(false);
-      return;
-    }
-    setShowMenu(true);
+  const toggleMenuDropdown = () => {
+    return setShowMenu(!showMenu);
   };
 
   return (
     <>
-      <Container onClick={handleShowMenu}>
+      <Container onClick={toggleMenuDropdown}>
         <Image src={user} alt="Alvo Cifras Logo" />
         <ContainerTittle>
           <Title style={{ color: '#5959BE' }}>{name}</Title>
