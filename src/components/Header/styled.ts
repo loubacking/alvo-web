@@ -1,40 +1,17 @@
 import styled from 'styled-components';
 
-export const HeaderContainer = styled.div`
-  position: relative;
-  top: 0;
-  background-color: #f5f5f5;
-  width: 100%;
-  height: 80px;
-  z-index: 100;
-  @media (max-width: 450px) {
-    height: 60px;
-  }
+export const Logo = styled.img`
+  width: 180px;
+  aspect-ratio: 3;
+  cursor: pointer;
 `;
 
 export const Container = styled.div`
-  position: fixed;
-  top: 0;
-  background-color: #f5f5f5;
   width: 100%;
-  height: 80px;
-  z-index: 100;
-  @media (max-width: 450px) {
-    height: 60px;
-  }
-`;
-
-export const HeaderText = styled.span`
-  color: #fff;
-  font-family: Arial Bold-MT, sans-serif;
-`;
-
-export const Logo = styled.img`
-  margin-top: 10px;
-  width: 180px;
-  aspect-ratio: 3;
-  @media (max-width: 450px) {
-    width: 160px;
-    margin-top: 5px;
-  }
+  padding: 2rem 8rem;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Arial, sans-serif';
+  font-weight: 600;
+  font-size: 20;
 `;

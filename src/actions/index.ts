@@ -1,4 +1,6 @@
 import { searchArtist, searchSong } from '../api/general';
+import jwt from 'jwt-decode';
+import { UserOption } from '../containers/Home/components';
 import {
 SEARCH_ARTIST_REQUEST,
 SEARCH_ARTIST_SUCCESS,
@@ -6,7 +8,8 @@ SEARCH_ARTIST_FAILED,
 SEARCH_SONG_REQUEST,
 SEARCH_SONG_SUCCESS,
 SEARCH_SONG_FAILED,
-AUTH_TOKEN
+AUTH_TOKEN,
+LOGIN_SUCCESSFULL
 } from '../reducers/types';
 
 // Search Artist
@@ -65,15 +68,21 @@ export const searchSongAction = (data: any) => async (dispatch: any) => {
     }
 };
 
-// AUTHTOKEN
-const authTokenType = (authToken: string) => ({
-    type: AUTH_TOKEN,
-    authToken
-});
+// LOGIN
 
-export const saveAuthToken = (authToken: string) => async (dispatch: any) => {
+const getLoginSuccessfullAction = (authToken: string, userInfo?: { email: string, fullName: string } | null) => ({
+    type: LOGIN_SUCCESSFULL,
+    authToken,
+    userInfo
+})
+
+export const saveTokenAndUserInfo = (authToken: string) => async (dispatch: any) => {
     try {
-        dispatch(authTokenType(authToken));
+        let userInfo;
+        if(authToken != ''){
+            userInfo = jwt(authToken) as {email: string, fullName: string};
+        }
+        dispatch(getLoginSuccessfullAction(authToken, userInfo));
     } catch (error) {
         return { error };
     }

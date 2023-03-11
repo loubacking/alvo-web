@@ -5,7 +5,7 @@ import Routes from './routes';
 import Cookies from 'universal-cookie';
 import { AUTH_TOKEN } from './reducers/types';
 import { useDispatch } from 'react-redux';
-import { saveAuthToken } from './actions';
+import { saveTokenAndUserInfo } from './actions';
 
 const App = () => {
   const cookies = new Cookies();
@@ -19,7 +19,7 @@ const App = () => {
     const authToken = cookies.get(AUTH_TOKEN);
 
     if (authToken) {
-      dispatch(saveAuthToken(authToken));
+      dispatch(saveTokenAndUserInfo(authToken));
     }
   };
 

@@ -15,8 +15,8 @@ const fetchAllSongsArtists = async (id: string) => {
     return res;
 };
 
-const createArtist = async (name: string, image: any) => {
-  const res = await Client.post('artists', { name, image });
+const createArtist = async (name: string, imageUrl: any) => {
+  const res = await Client.post('artists', { name, imageUrl });
   return res;
 };
 
