@@ -20,7 +20,7 @@ import { stateToHTML } from 'draft-js-export-html';
 
 const Songs = ({ location }) => {
   const [name, setName] = useState('');
-  const [image, setImage] = useState('');
+  const [imageUrl, setImage] = useState('');
   const [artistName, setArtistName] = useState('');
   const [artistId, setArtistId] = useState('');
   const [isLyrics, setIsLyrics] = useState(true);
@@ -43,7 +43,7 @@ const Songs = ({ location }) => {
       }
 
       fetchArtists(artistId).then((response) => {
-        setImage(response.data.image);
+        setImage(response.data.imageUrl);
       });
     });
   }, [location.state]);
@@ -61,7 +61,7 @@ const Songs = ({ location }) => {
           <Row>
             <Col md={2} xs={12}>
               <Link to={{ pathname: '/artists', state: { artistId } }}>
-                <ArtistWrapper>{image && <Image src={image} />}</ArtistWrapper>
+                <ArtistWrapper>{imageUrl && <Image src={imageUrl} />}</ArtistWrapper>
               </Link>
             </Col>
             <Col md={6} xs={12}>

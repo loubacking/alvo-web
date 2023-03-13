@@ -69,7 +69,7 @@ const SearchForm = () => {
             <ArtistWrapper>
               <ArtistTitle>Artistas</ArtistTitle>
               {artists && artists.length !== 0 ? (
-                artists.slice(0, 3).map((artist) => <ListArtist key={artist._id} artist={artist} />)
+                artists.slice(0, 3).map((artist) => <ListArtist key={artist.id} artist={artist} />)
               ) : isSearching ? (
                 <SkeletonWrapper>
                   <Skeleton circle width={40} height={40} />

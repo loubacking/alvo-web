@@ -5,7 +5,7 @@ import { SongName, SongWrapper, ArtistName } from './styled';
 const ListSong = ({ song }) => {
   return (
     <SongWrapper>
-      <Link to={{ pathname: '/songs', state: { songId: song._id } }}>
+      <Link to={{ pathname: '/songs', state: { songId: song.id } }}>
         <SongName>{song.name}</SongName>
         <ArtistName>{song.artistName}</ArtistName>
       </Link>

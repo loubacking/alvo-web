@@ -63,7 +63,7 @@ const AdminSongs = (props) => {
               <tbody>
                 {songs.map((song) => (
                   <tr>
-                    <td>{song._id}</td>
+                    <td>{song.id}</td>
                     <td>{song.name}</td>
                     <td>{song.artistName}</td>
                   </tr>
@@ -88,7 +88,7 @@ const AdminSongs = (props) => {
                 onChange={(e) => setSelectedArtist(e.target.value)}
               >
                 {artists.map((artist) => (
-                  <option key={artist._id} value={artist._id}>
+                  <option key={artist.id} value={artist.id}>
                     {artist.name}
                   </option>
                 ))}

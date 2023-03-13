@@ -5,7 +5,7 @@ import { AUTH_TOKEN } from '../reducers/types';
 
 
 export const Client = axios.create({
-  baseURL: 'https://alvocifras-api.herokuapp.com/',
+  baseURL: process.env.REACT_APP_API_URL,
   headers: { 
     'Content-Type': 'application/json',
     'temporary-access': 'alvo2020' 

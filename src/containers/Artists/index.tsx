@@ -18,7 +18,7 @@ import {
 
 const Artists = (props) => {
   const [name, setName] = useState('');
-  const [image, setImage] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const [songs, setSongs] = useState([]);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const Artists = (props) => {
 
     fetchArtists(artistId).then((res) => {
       setName(res.data.name);
-      setImage(res.data.image);
+      setImageUrl(res.data.imageUrl);
     });
 
     fetchAllSongsArtists(artistId).then((res) => {
@@ -45,7 +45,7 @@ const Artists = (props) => {
         <Container>
           <Col>
             <ArtistWrapper>
-              {image && <Image src={image} />}
+              {imageUrl && <Image src={imageUrl} />}
               <ArtistName>{name}</ArtistName>
             </ArtistWrapper>
           </Col>
@@ -55,8 +55,8 @@ const Artists = (props) => {
               {songs &&
                 songs.map((song: any, index: any) => (
                   <Link
-                    key={song._id}
-                    to={{ pathname: '/songs', state: { songId: song._id } }}
+                    key={song.id}
+                    to={{ pathname: '/songs', state: { songId: song.id } }}
                   >
                     <SongName>
                       <Index>{index + 1}</Index>
