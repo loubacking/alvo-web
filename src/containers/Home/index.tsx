@@ -41,9 +41,9 @@ const Home = () => {
             {artists ? (
               artists.slice(0, 4).map((artist) => (
                 <Link
-                  key={artist._id}
+                  key={artist.id}
                   style={styles.suggestionText}
-                  to={{ pathname: '/artists', state: { artistId: artist._id } }}
+                  to={{ pathname: '/artists', state: { artistId: artist.id } }}
                 >
                   <span style={{ marginRight: 15 }}>{artist.name}</span>
                 </Link>

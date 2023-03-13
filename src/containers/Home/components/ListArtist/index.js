@@ -5,8 +5,8 @@ import { Image, ArtistName, ArtistWrapper } from './styled';
 const ListArtist = ({ artist }) => {
   return (
     <ArtistWrapper>
-      <Link to={{ pathname: '/artists', state: { artistId: artist._id } }}>
-        <Image src={artist.image} />
+      <Link to={{ pathname: '/artists', state: { artistId: artist.id } }}>
+        <Image src={artist.imageUrl} />
         <ArtistName>{artist.name}</ArtistName>
       </Link>
     </ArtistWrapper>

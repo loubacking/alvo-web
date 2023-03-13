@@ -51,7 +51,7 @@ const AdminArtists = () => {
               <tbody>
                 {artists.map((artist) => (
                   <tr>
-                    <td>{artist._id}</td>
+                    <td>{artist.id}</td>
                     <td>{artist.name}</td>
                     <td>
                       <Button

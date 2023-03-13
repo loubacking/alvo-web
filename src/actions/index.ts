@@ -1,6 +1,5 @@
 import { searchArtist, searchSong } from '../api/general';
 import jwt from 'jwt-decode';
-import { UserOption } from '../containers/Home/components';
 import {
 SEARCH_ARTIST_REQUEST,
 SEARCH_ARTIST_SUCCESS,
