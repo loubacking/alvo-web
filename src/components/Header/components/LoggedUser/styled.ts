@@ -45,6 +45,6 @@ export const MenuItem = styled.div`
   padding: 10px;
   cursor: pointer;
   &:hover {
-    background:#e2e2e2 ;
+    background: #e2e2e2;
   }
 `;

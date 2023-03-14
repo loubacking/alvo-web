@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import "../../../App.css";
-import { Container, Col, Table, Button, Modal } from "react-bootstrap";
-import Footer from "../../../components/Footer";
-import { fetchAllArtists, createArtist } from "../../../api/artists";
-import Header from "../../../components/Header";
-import { Wrapper, FormWrapper } from "./styled";
-import { FormControl } from "react-bootstrap";
+import { useState, useEffect } from 'react';
+import '../../../App.css';
+import { Container, Col, Table, Button, Modal } from 'react-bootstrap';
+import Footer from '../../../components/Footer';
+import { fetchAllArtists, createArtist } from '../../../api/artists';
+import Header from '../../../components/Header';
+import { Wrapper, FormWrapper } from './styled';
+import { FormControl } from 'react-bootstrap';
 
 const AdminArtists = () => {
   const [artists, setArtists] = useState([]);
   const [showCreate, setShowCreate] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
-  const [artistName, setArtistName] = useState("");
-  const [artistUrl, setArtistUrl] = useState("");
+  const [artistName, setArtistName] = useState('');
+  const [artistUrl, setArtistUrl] = useState('');
 
   useEffect(() => {
     fetchAllArtists().then(({ data }) => {
@@ -35,8 +35,8 @@ const AdminArtists = () => {
         <Col>
           <Wrapper>
             <Button
-             style={{ float: "right", margin: 4 }}
-             onClick={toggleModalCreate}
+              style={{ float: 'right', margin: 4 }}
+              onClick={toggleModalCreate}
             >
               Criar
             </Button>
@@ -49,13 +49,17 @@ const AdminArtists = () => {
                 </tr>
               </thead>
               <tbody>
-                {artists.map((artist) => (
-                  <tr>
+                {artists.map((artist: any) => (
+                  <tr key={artist.id}>
                     <td>{artist.id}</td>
                     <td>{artist.name}</td>
                     <td>
                       <Button
-                        style={{ float: "right", marginHorizontal: 4 }}
+                        style={{
+                          float: 'right',
+                          marginLeft: 4,
+                          marginRight: 4
+                        }}
                         onClick={toggleModalEdit}
                       >
                         Editar

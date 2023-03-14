@@ -12,5 +12,5 @@ export const NotLoggedUser = () => {
         <Button title="Cadastrar" />
       </Link>
     </div>
-  )
-}
+  );
+};

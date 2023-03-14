@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 type TagType = {
-  dark: boolean
-}
+  dark: boolean;
+};
 
 export const Tag = styled.div<TagType>`
   padding: 0 10px;

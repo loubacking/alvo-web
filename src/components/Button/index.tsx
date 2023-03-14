@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { FaCheck } from 'react-icons/fa';
 import { ContainerButton, TitleButton } from './styled';
@@ -26,10 +26,10 @@ const Button = ({
   success,
   marginTop,
   marginBottom,
-  onClick,
+  onClick
 }: ButtonProps) => {
   const [backgroundButton, setBackGroundButton] = useState<string | undefined>(
-    backgroundColor,
+    backgroundColor
   );
   const [hoverBackgroundButton, setHoverBackGroundButton] = useState<
     string | undefined

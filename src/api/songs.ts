@@ -13,6 +13,6 @@ const fetchSongs = async (id: string) => {
 const createSong = async (data: any) => {
   const res = await Client.post('songs/', data);
   return res;
-}
+};
 
 export { fetchAllSongs, fetchSongs, createSong };

@@ -6,13 +6,13 @@ const fetchAllArtists = async () => {
 };
 
 const fetchArtists = async (id: string) => {
-    const res = await Client.get('artists/' + id);
-    return res;
-  };
+  const res = await Client.get('artists/' + id);
+  return res;
+};
 
 const fetchAllSongsArtists = async (id: string) => {
-    const res = await Client.get('artists/' + id + '/songs');
-    return res;
+  const res = await Client.get('artists/' + id + '/songs');
+  return res;
 };
 
 const createArtist = async (name: string, imageUrl: any) => {

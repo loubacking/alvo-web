@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
-import "../../../App.css";
-import { Container, Col, Table, Button, Modal, Form } from "react-bootstrap";
-import Footer from "../../../components/Footer";
-import { fetchAllArtists } from "../../../api/artists";
-import Header from "../../../components/Header";
-import { Wrapper, FormWrapper } from "./styled";
-import { fetchAllSongs, createSong } from "../../../api/songs";
-import { Editor } from "react-draft-wysiwyg";
-import "../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { useState, useEffect } from 'react';
+import '../../../App.css';
+import { Container, Col, Table, Button, Modal, Form } from 'react-bootstrap';
+import Footer from '../../../components/Footer';
+import { fetchAllArtists } from '../../../api/artists';
+import Header from '../../../components/Header';
+import { Wrapper, FormWrapper } from './styled';
+import { fetchAllSongs, createSong } from '../../../api/songs';
+import { Editor } from 'react-draft-wysiwyg';
+import '../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
-const AdminSongs = (props) => {
+const AdminSongs = () => {
   const [artists, setArtists] = useState([]);
   const [songs, setSongs] = useState([]);
   const [show, setShow] = useState(false);
-  const [selectedArtist, setSelectedArtist] = useState({});
-  const [songName, setSongName] = useState("");
-  const [contentLyrics, setContentLyrics] = useState("");
-  const [contentChords, setContentChords] = useState("");
+  const [selectedArtist, setSelectedArtist] = useState('');
+  const [songName, setSongName] = useState('');
+  const [contentLyrics, setContentLyrics] = useState('');
+  const [contentChords, setContentChords] = useState('');
 
   useEffect(() => {
     fetchAllArtists().then(({ data }) => setArtists(data));
@@ -49,7 +49,7 @@ const AdminSongs = (props) => {
       <Container>
         <Col>
           <Wrapper>
-            <Button style={{ float: "right", margin: 4 }} onClick={toggleModal}>
+            <Button style={{ float: 'right', margin: 4 }} onClick={toggleModal}>
               Criar
             </Button>
             <Table striped bordered hover>
@@ -61,8 +61,8 @@ const AdminSongs = (props) => {
                 </tr>
               </thead>
               <tbody>
-                {songs.map((song) => (
-                  <tr>
+                {songs.map((song: any) => (
+                  <tr key={song.id}>
                     <td>{song.id}</td>
                     <td>{song.name}</td>
                     <td>{song.artistName}</td>
@@ -87,7 +87,7 @@ const AdminSongs = (props) => {
                 value={selectedArtist}
                 onChange={(e) => setSelectedArtist(e.target.value)}
               >
-                {artists.map((artist) => (
+                {artists.map((artist: any) => (
                   <option key={artist.id} value={artist.id}>
                     {artist.name}
                   </option>
@@ -107,9 +107,9 @@ const AdminSongs = (props) => {
               <Editor
                 editorStyle={{
                   borderWidth: 1,
-                  borderStyle: "solid",
-                  borderColor: "#F1F1F1",
-                  height: "500px"
+                  borderStyle: 'solid',
+                  borderColor: '#F1F1F1',
+                  height: '500px'
                 }}
                 onContentStateChange={onContentLyricsChange}
               />
@@ -118,9 +118,9 @@ const AdminSongs = (props) => {
             <Editor
               editorStyle={{
                 borderWidth: 1,
-                borderStyle: "solid",
-                borderColor: "#F1F1F1",
-                height: "500px"
+                borderStyle: 'solid',
+                borderColor: '#F1F1F1',
+                height: '500px'
               }}
               onContentStateChange={onContentChordsChange}
             />

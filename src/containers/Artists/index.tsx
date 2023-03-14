@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Col, Spinner } from 'react-bootstrap';
 import { Header, Footer } from '../../components';
@@ -13,16 +13,20 @@ import {
   SongsWrapper,
   SongName,
   Title,
-  Index,
+  Index
 } from './styled';
 
-const Artists = (props) => {
+interface ArtistsProps {
+  location: any;
+}
+
+const Artists = ({ location }: ArtistsProps) => {
   const [name, setName] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [songs, setSongs] = useState([]);
 
   useEffect(() => {
-    const artistId = props.location.state && props.location.state.artistId;
+    const artistId = location.state && location.state.artistId;
 
     if (!artistId) {
       window.location.pathname = '/';
@@ -36,7 +40,7 @@ const Artists = (props) => {
     fetchAllSongsArtists(artistId).then((res) => {
       setSongs(res.data);
     });
-  }, [props.location.state]);
+  }, [location.state]);
 
   return (
     <>
@@ -75,7 +79,7 @@ const Artists = (props) => {
               display: 'flex',
               justifyContent: 'center',
               marginTop: 100,
-              height: 700,
+              height: 700
             }}
           >
             <Spinner animation="border" color="#5959be" />

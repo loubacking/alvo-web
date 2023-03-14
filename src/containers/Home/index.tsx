@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
 import { Container, Row, Col } from 'react-bootstrap';
 
-import { SearchForm, RecentSearchSkeleton } from './components';
+import { RecentSearchSkeleton, SearchForm } from './components';
 import { Footer, Header } from '../../components';
 import { fetchAllArtists } from '../../api/artists';
 
 import '../../App.css';
 import { Title } from './styled';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const [artists, setArtists] = useState<any>([]);
+  const [artists, setArtists] = useState([]);
 
   useEffect(() => {
     fetchAllArtists().then(({ data }) => setArtists(data));
@@ -38,8 +39,8 @@ const Home = () => {
             <div style={styles.suggestionTitle}>
               <span>Busca mais frequentes</span>
             </div>
-            {artists ? (
-              artists.slice(0, 4).map((artist) => (
+            {artists.length !== 0 ? (
+              artists.slice(0, 4).map((artist: any) => (
                 <Link
                   key={artist.id}
                   style={styles.suggestionText}
@@ -69,7 +70,7 @@ const styles = {
     color: '#424242',
     letterSpacing: 1.23,
     marginBottom: 30,
-    lineHeight: 1.2,
+    lineHeight: 1.2
   },
   suggestionTitle: {
     fontFamily: 'Arial, sans-serif',
@@ -77,12 +78,12 @@ const styles = {
     color: '#424242',
     letterSpacing: 0.5,
     fontWeight: 600,
-    marginBottom: 10,
+    marginBottom: 10
   },
   suggestionText: {
     fontFamily: 'Arial, sans-serif',
     fontSize: 13,
     color: '#5959BE',
-    letterSpacing: 0.5,
-  },
+    letterSpacing: 0.5
+  }
 };

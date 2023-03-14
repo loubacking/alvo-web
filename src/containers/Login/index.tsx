@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { FaUser } from 'react-icons/fa';
+import { FaUser, FaLock } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import Cookies from 'universal-cookie';
@@ -18,7 +18,7 @@ import {
   PASSWORD_LABEL,
   PASSWORD_PLACEHOLDER,
   REGISTER,
-  TITLE_BUTTON,
+  TITLE_BUTTON
 } from './constants';
 import { LoginTypes } from './types';
 import { AUTH_TOKEN } from '../../reducers/types';
@@ -44,7 +44,7 @@ const Login = () => {
 
     try {
       const req = await login(formData);
-      dispatch(saveTokenAndUserInfo(req.authToken))
+      dispatch(saveTokenAndUserInfo(req.authToken));
       cookies.set(AUTH_TOKEN, req.authToken);
       setSuccessLogin();
 
@@ -94,7 +94,7 @@ const Login = () => {
             label={PASSWORD_LABEL}
             placeholder={PASSWORD_PLACEHOLDER}
             password
-            icon={<FaUser />}
+            icon={<FaLock />}
             register={register}
             error={error}
           />

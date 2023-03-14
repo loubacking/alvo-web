@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Col, Row, Spinner } from 'react-bootstrap';
 import {
@@ -9,7 +9,7 @@ import {
   SongName,
   Lyrics,
   Chords,
-  RowStyled,
+  RowStyled
 } from './styled';
 import { Header, Footer } from '../../components';
 import { fetchArtists } from '../../api/artists';
@@ -18,7 +18,11 @@ import Tags from './components/Tags';
 import { convertFromRaw } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
 
-const Songs = ({ location }) => {
+interface SongsProps {
+  location: any;
+}
+
+const Songs = ({ location }: SongsProps) => {
   const [name, setName] = useState('');
   const [imageUrl, setImage] = useState('');
   const [artistName, setArtistName] = useState('');
@@ -28,7 +32,7 @@ const Songs = ({ location }) => {
   const [formattedLyrics, setFormattedLyrics] = useState('');
 
   useEffect(() => {
-    fetchSongs(location.state && location.state.songId).then((res) => {
+    fetchSongs(location?.state?.songId).then((res) => {
       const { lyrics, name, artistName, artistId, chords } = res.data;
 
       setName(name);
@@ -61,7 +65,9 @@ const Songs = ({ location }) => {
           <Row>
             <Col md={2} xs={12}>
               <Link to={{ pathname: '/artists', state: { artistId } }}>
-                <ArtistWrapper>{imageUrl && <Image src={imageUrl} />}</ArtistWrapper>
+                <ArtistWrapper>
+                  {imageUrl && <Image src={imageUrl} />}
+                </ArtistWrapper>
               </Link>
             </Col>
             <Col md={6} xs={12}>
@@ -80,7 +86,9 @@ const Songs = ({ location }) => {
             <Col md={{ span: 4, offset: 2 }} xs={{ span: 12 }}>
               {isLyrics ? (
                 formattedLyrics ? (
-                  <Lyrics dangerouslySetInnerHTML={{ __html: formattedLyrics }} />
+                  <Lyrics
+                    dangerouslySetInnerHTML={{ __html: formattedLyrics }}
+                  />
                 ) : (
                   <Spinner animation="border" variant="secondary" />
                 )
@@ -98,7 +106,7 @@ const Songs = ({ location }) => {
               display: 'flex',
               justifyContent: 'center',
               marginTop: 100,
-              height: 700,
+              height: 700
             }}
           >
             <Spinner animation="border" color="#5959be" />

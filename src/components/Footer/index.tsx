@@ -1,4 +1,3 @@
-import React from 'react';
 import { Col } from 'react-bootstrap';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 import { FooterContainer, FooterText } from './styled';

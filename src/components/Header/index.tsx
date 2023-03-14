@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
 import { Container, Logo } from './styled';
 import logo from '../../assets/images/logo-alvo1.png';
@@ -30,18 +30,19 @@ const Header = () => {
   };
 
   return (
-    <Row>
-        <Container>
-            <Logo src={logo} alt="Alvo Cifras Logo" onClick={() => history.push('/')}/>
+    <Container>
+      <Logo
+        src={logo}
+        alt="Alvo Cifras Logo"
+        onClick={() => history.push('/')}
+      />
 
-            {name ? (
-                <LoggedUser userName={name} onLogOut={onLogOut} />
-                ) : (
-                <NotLoggedUser />
-                )
-            }
-        </Container>
-    </Row>
+      {name ? (
+        <LoggedUser userName={name} onLogOut={onLogOut} />
+      ) : (
+        <NotLoggedUser />
+      )}
+    </Container>
   );
 };
 

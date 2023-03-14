@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Row } from "react-bootstrap";
+import styled from 'styled-components';
+import { Row } from 'react-bootstrap';
 
 export const Image = styled.img`
   height: 160px;

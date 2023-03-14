@@ -1,4 +1,8 @@
-import { LoginTypes, ResCreateUserType, ResLoginType } from '../containers/Login/types';
+import {
+  LoginTypes,
+  ResCreateUserType,
+  ResLoginType
+} from '../containers/Login/types';
 import { RegisterType } from '../containers/Register/types';
 import { Client } from './client';
 

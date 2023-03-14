@@ -1,13 +1,12 @@
-import React from 'react';
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 import { CheckIcon, CheckMessage, CheckMessageContainer } from './styled';
 
-type Props = {
+type CheckTagProps = {
   title: string;
   status: boolean;
 };
 
-const CheckTag = ({ title, status }: Props) => {
+const CheckTag = ({ title, status }: CheckTagProps) => {
   const handleCheckIcon = (status: boolean) => {
     switch (status) {
       case true:

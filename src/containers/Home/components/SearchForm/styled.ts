@@ -8,7 +8,7 @@ export const InputGroup = styled.div`
   width: 100%;
 `;
 
-export const SearchInput = styled.input`
+export const SearchInput = styled.input<{ isSuggestion: any }>`
   display: block;
   width: 100%;
   height: calc(2.5rem + 2px);
@@ -22,10 +22,13 @@ export const SearchInput = styled.input`
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 25px;
-  -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -webkit-transition: border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  border-bottom-left-radius: ${({ isSuggestion }) => (isSuggestion ? 0 : '25px')};
-  border-bottom-right-radius: ${({ isSuggestion }) => (isSuggestion ? 0 : '25px')};
+  border-bottom-left-radius: ${({ isSuggestion }: any) =>
+    isSuggestion ? 0 : '25px'};
+  border-bottom-right-radius: ${({ isSuggestion }: any) =>
+    isSuggestion ? 0 : '25px'};
   outline: none;
 `;
 

@@ -4,12 +4,11 @@ import { UseFormRegister, FieldValues } from 'react-hook-form';
 
 import { ErrorMessage, FormInput, IconWrapper } from './styled';
 
-interface Props {
+interface InputFormProps {
   id: string;
   label: string;
   icon: React.ReactNode;
   placeholder?: string;
-  required?: boolean;
   password?: boolean;
   error?: string;
   register: UseFormRegister<FieldValues>;
@@ -21,12 +20,11 @@ const InputForm = ({
   label,
   icon,
   placeholder,
-  required,
   password,
   error,
   register,
-  onChange,
-}: Props) => {
+  onChange
+}: InputFormProps) => {
   return (
     <Form.Group>
       <Form.Label>{label}</Form.Label>

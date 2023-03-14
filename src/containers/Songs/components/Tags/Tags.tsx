@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Tag } from './styled';
 
@@ -8,13 +8,13 @@ interface TagsType {
 }
 
 const Tags = ({ tags, toggleLyrics }: TagsType) => {
-  const [selectedTagName, setSelectedTagName] = useState("Letra");
+  const [selectedTagName, setSelectedTagName] = useState('Letra');
 
   const selectTag = (tagName: string) => {
     if (tagName !== 'Letra') {
-      setSelectedTagName("Cifra");
+      setSelectedTagName('Cifra');
     } else {
-      setSelectedTagName("Letra");
+      setSelectedTagName('Letra');
     }
     toggleLyrics(tagName);
   };
@@ -28,17 +28,18 @@ const Tags = ({ tags, toggleLyrics }: TagsType) => {
           key={tag + index}
           dark={isSelected(tag)}
           onClick={() => selectTag(tag)}
-        >{tag}</Tag>
+        >
+          {tag}
+        </Tag>
       ))}
     </>
   );
-
-}
+};
 
 Tags.propTypes = {
   tags: PropTypes.array.isRequired,
   notifySelectedTagsName: PropTypes.func,
-  renderTags: PropTypes.func,
+  renderTags: PropTypes.func
 };
 
 export default Tags;

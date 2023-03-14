@@ -1,8 +1,15 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Image, ArtistName, ArtistWrapper } from './styled';
 
-const ListArtist = ({ artist }) => {
+interface ListArtistProps {
+  artist: {
+    id: string;
+    imageUrl: string;
+    name: string;
+  };
+}
+
+const ListArtist = ({ artist }: ListArtistProps) => {
   return (
     <ArtistWrapper>
       <Link to={{ pathname: '/artists', state: { artistId: artist.id } }}>

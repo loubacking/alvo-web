@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { searchArtistAction, searchSongAction } from '../../../../actions';
 import {
@@ -13,7 +13,7 @@ import {
   ArtistWrapper,
   SongWrapper,
   SkeletonWrapper,
-  SkeletonName,
+  SkeletonName
 } from './styled';
 import { FaSearch } from 'react-icons/fa';
 import ListArtist from '../ListArtist';
@@ -23,7 +23,9 @@ import debounce from 'lodash.debounce';
 
 const SearchForm = () => {
   const dispatch = useDispatch();
-  const { artists, songs, isSearching } = useSelector((state) => state.unique);
+  const { artists, songs, isSearching } = useSelector(
+    (state: any) => state.unique
+  );
 
   const [isSuggestion, setIsSuggestion] = useState(false);
 
@@ -69,12 +71,20 @@ const SearchForm = () => {
             <ArtistWrapper>
               <ArtistTitle>Artistas</ArtistTitle>
               {artists && artists.length !== 0 ? (
-                artists.slice(0, 3).map((artist) => <ListArtist key={artist.id} artist={artist} />)
+                artists
+                  .slice(0, 3)
+                  .map((artist) => (
+                    <ListArtist key={artist.id} artist={artist} />
+                  ))
               ) : isSearching ? (
                 <SkeletonWrapper>
                   <Skeleton circle width={40} height={40} />
                   <SkeletonName>
-                    <Skeleton width={120} height={16} style={{ marginLeft: 52 }} />
+                    <Skeleton
+                      width={120}
+                      height={16}
+                      style={{ marginLeft: 52 }}
+                    />
                   </SkeletonName>
                 </SkeletonWrapper>
               ) : (
@@ -84,11 +94,17 @@ const SearchForm = () => {
             <SongWrapper>
               <SongTitle>Músicas</SongTitle>
               {songs && songs.length !== 0 ? (
-                songs.slice(0, 3).map((song) => <ListSong key={song.id} song={song} />)
+                songs
+                  .slice(0, 3)
+                  .map((song) => <ListSong key={song.id} song={song} />)
               ) : isSearching ? (
                 <SkeletonWrapper>
                   <SkeletonName>
-                    <Skeleton width={172} height={16} style={{ marginTop: 36 }} />
+                    <Skeleton
+                      width={172}
+                      height={16}
+                      style={{ marginTop: 36 }}
+                    />
                   </SkeletonName>
                 </SkeletonWrapper>
               ) : (

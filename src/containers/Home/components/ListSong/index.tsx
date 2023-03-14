@@ -1,8 +1,15 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { SongName, SongWrapper, ArtistName } from './styled';
 
-const ListSong = ({ song }) => {
+interface ListSongProps {
+  song: {
+    id: string;
+    name: string;
+    artistName: string;
+  };
+}
+
+const ListSong = ({ song }: ListSongProps) => {
   return (
     <SongWrapper>
       <Link to={{ pathname: '/songs', state: { songId: song.id } }}>

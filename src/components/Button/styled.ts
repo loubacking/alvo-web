@@ -4,7 +4,7 @@ type ContainerType = {
   backgroundColor?: string;
   hoverBackground?: string;
   marginTop?: number;
-  marginBottom?: number; 
+  marginBottom?: number;
 };
 
 type TitleType = {
@@ -20,8 +20,9 @@ export const ContainerButton = styled.div<ContainerType>`
   height: 40px;
   padding: 0 10px;
   margin-top: ${(props) => (props.marginTop ? props.marginTop : 0)}px;
-  margin-bottom: ${(props) => (props.marginBottom ? props.marginBottom : 0)}px;;
-  background: ${(props) => (props.backgroundColor ? props.backgroundColor : '#5959be')};
+  margin-bottom: ${(props) => (props.marginBottom ? props.marginBottom : 0)}px;
+  background: ${(props) =>
+    props.backgroundColor ? props.backgroundColor : '#5959be'};
   border-radius: 5px;
   cursor: pointer;
   &:hover {

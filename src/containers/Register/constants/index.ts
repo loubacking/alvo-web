@@ -1,40 +1,38 @@
-// Regex 
+// Regex
 
-import { PASSWORD_MIN_LENGTH } from "../validations/passwordValidation";
+import { PASSWORD_MIN_LENGTH } from '../validations/passwordValidation';
 
 //validation register
-export var REGEX_SPECIAL_CHARACTERS = /(?=.*[}{,.^?~=+@\\-_\/*\-+.\\|])(?=.*)./g;
-export var REGEX_VALIDATE_EMAIL = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-
+export const REGEX_SPECIAL_CHARACTERS = /(?=.*[}{,.^?~=+@\\-_\/*\-+.\\|])(?=.*)./g;
+export const REGEX_VALIDATE_EMAIL = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 // String
 
 // Erros de validação
-export var FULL_NAME_ERROR = "Nome inválido. Digite o seu nome completo e evite caracteres especiais ' * () : ! ; /  '";
-export var EMAIL_ERROR = "Email inválido. O email precisa conter os caracteres '@' e '.', exemplo: alvo@email.com";
+export const FULL_NAME_ERROR =
+  "Nome inválido. Digite o seu nome completo e evite caracteres especiais ' * () : ! ; /  '";
+export const EMAIL_ERROR =
+  "Email inválido. O email precisa conter os caracteres '@' e '.', exemplo: alvo@email.com";
 
 // Tags de validação de senha
-export var CHECK_MIN_LENGTH = `Contém no mínimo ${PASSWORD_MIN_LENGTH} dígitos.`;
-export var HAS_AT_LEAST_ONE_CAPITAL_LETTER = 'Contém pelo menos uma letra maiúscula.';
-export var EQUALS_PASSWORD = 'Senha e confirmação de senha são iguais.';
+export const CHECK_MIN_LENGTH = `Contém no mínimo ${PASSWORD_MIN_LENGTH} dígitos.`;
+export const HAS_AT_LEAST_ONE_CAPITAL_LETTER =
+  'Contém pelo menos uma letra maiúscula.';
+export const EQUALS_PASSWORD = 'Senha e confirmação de senha são iguais.';
 
-// Página de cadastro 
+// Página de cadastro
 
 // LABELS
-export var FULL_NAME_LABEL = 'Nome completo *';
-export var EMAIL_LABEL = 'Email *';
-export var PASSWORD_LABEL = 'Senha *';
-export var PASSWORD_CONFIRMATION_LABEL = 'Confirmar senha *';
+export const FULL_NAME_LABEL = 'Nome completo *';
+export const EMAIL_LABEL = 'Email *';
+export const PASSWORD_LABEL = 'Senha *';
+export const PASSWORD_CONFIRMATION_LABEL = 'Confirmar senha *';
 
 // PLACEHOLDER
-export var FULL_NAME_PLACEHOLDER = 'Digite seu nome aqui';
-export var EMAIL_PLACEHOLDER = 'Ex: alvo@email.com';
-export var PASSWORD_PLACEHOLDER = `Mínimo ${PASSWORD_MIN_LENGTH} digitos`;
-export var PASSWORD_CONFIRMATION_PLACEHOLDER = `Mínimo ${PASSWORD_MIN_LENGTH} digitos`;
+export const FULL_NAME_PLACEHOLDER = 'Digite seu nome aqui';
+export const EMAIL_PLACEHOLDER = 'Ex: alvo@email.com';
+export const PASSWORD_PLACEHOLDER = `Mínimo ${PASSWORD_MIN_LENGTH} digitos`;
+export const PASSWORD_CONFIRMATION_PLACEHOLDER = `Mínimo ${PASSWORD_MIN_LENGTH} digitos`;
 
 // TITLE
-export var REGISTER_BUTTON_TEXT = 'Cadastrar';
-
-
-
-
+export const REGISTER_BUTTON_TEXT = 'Cadastrar';

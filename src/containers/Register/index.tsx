@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { FaEnvelope, FaLock, FaUser } from 'react-icons/fa';
@@ -11,7 +11,7 @@ import logo from '../../assets/images/logo-alvo.png';
 import { createUser } from '../../api/auth';
 import {
   validateEmail,
-  validateFullName,
+  validateFullName
 } from './validations/registerValidation';
 
 import {
@@ -25,7 +25,7 @@ import {
   PASSWORD_CONFIRMATION_PLACEHOLDER,
   PASSWORD_LABEL,
   PASSWORD_PLACEHOLDER,
-  REGISTER_BUTTON_TEXT,
+  REGISTER_BUTTON_TEXT
 } from './constants';
 import { RegisterType } from './types';
 
@@ -117,7 +117,6 @@ const Register = () => {
           label={FULL_NAME_LABEL}
           placeholder={FULL_NAME_PLACEHOLDER}
           register={register}
-          required
           error={fullNameError}
         />
 
@@ -127,7 +126,6 @@ const Register = () => {
           label={EMAIL_LABEL}
           placeholder={EMAIL_PLACEHOLDER}
           register={register}
-          required
           error={EmailError}
         />
 
@@ -139,14 +137,7 @@ const Register = () => {
           register={register}
           password
           onChange={(text) => setPassword(text)}
-          required
         />
-        <CheckPassword
-          password={password}
-          passwordConfirmation={passwordConfirmation}
-          isCheckPassword={handleCheckedValidationPassword}
-        />
-
         <InputForm
           id="passwordConfirmation"
           icon={<FaLock />}
@@ -155,7 +146,6 @@ const Register = () => {
           register={register}
           password
           onChange={(text) => setPasswordConfirmation(text)}
-          required
         />
         <CheckPassword
           password={password}
@@ -171,7 +161,7 @@ const Register = () => {
           marginTop={30}
         />
       </Container>
-      <Footer />
+      <Footer absolute />
     </>
   );
 };
